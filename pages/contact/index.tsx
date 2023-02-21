@@ -2,7 +2,7 @@ import { Component } from 'react';
 import StyledComponentsRegistry from '../lib/registry';
 import Nav from '../components/nav';
 
-class Projects extends Component {
+class Contact extends Component {
   isPageLoading = true;
   componentDidMount(): void {
     this.isPageLoading = false;
@@ -11,10 +11,10 @@ class Projects extends Component {
     return (
     <StyledComponentsRegistry>
         <Nav />
-        <div>Projects</div>
+        <div>Contact</div>
     </StyledComponentsRegistry>
   )
   }
 }
 
-export default Projects;
+export default Contact;

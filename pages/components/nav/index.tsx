@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import {AiOutlineMenu} from 'react-icons/ai';
 import {IoClose, IoPersonSharp, IoMail} from 'react-icons/io5';
 import {AiFillHome, AiFillCode} from 'react-icons/ai';
+import { useRouter } from 'next/router';
 
 interface NavProps {
   isLoading: boolean;
@@ -15,6 +16,8 @@ interface NavProps {
 const Nav:NextPage = () => {
     const [menuOpened, setMenuOpened] = useState(false);
 
+    const router = useRouter();
+
     return <Navigator>
         <button id="OpenCloseMenu" className="MenuButton" onClick={() => setMenuOpened(!menuOpened)}>
             {menuOpened ? <IoClose /> : <AiOutlineMenu />}
@@ -22,20 +25,20 @@ const Nav:NextPage = () => {
         <div className="MenuShadow" style={menuOpened ? { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' } : { clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}></div>
         <div className="MenuBlueShadow" style={menuOpened ? { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' } : { clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}></div>
         <div id="MenuOptions" style={menuOpened ? { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' } : { clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} className="MenuOptions">
-            <Link style={menuOpened ? { top: 0, right: '7.5rem' } : { top: 0, right: 0 }} className="MenuOptions__link" href="/">
-                <div className="MenuOptions__link-icon"><AiFillHome /></div>
+            <Link className="MenuOptions__link" href="/">
+                <div style={{ borderColor: router.pathname === '/' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><AiFillHome /></div>
                 <span className="MenuOptions__link-name">Strona główna</span>
             </Link>
-            <Link style={menuOpened ? { top: '3.5rem', right: '7.5rem' } : { top: 0, right: 0 }} className="MenuOptions__link" href="/">
-                <div className="MenuOptions__link-icon"><IoPersonSharp /></div>
+            <Link className="MenuOptions__link" href="/about">
+                <div style={{ borderColor: router.pathname === '/about' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><IoPersonSharp /></div>
                 <span className="MenuOptions__link-name">O mnie</span>
             </Link>
-            <Link style={menuOpened ? { top: '7.5rem', right: '3.5rem' } : { top: 0, right: 0 }} className="MenuOptions__link" href="/">
-                <div className="MenuOptions__link-icon"><AiFillCode /></div>
+            <Link className="MenuOptions__link" href="/projects">
+                <div style={{ borderColor: router.pathname === '/projects' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><AiFillCode /></div>
                 <span className="MenuOptions__link-name">Projekty</span>
             </Link>
-            <Link style={menuOpened ? { top: '7.5rem', right: 0 } : { top: 0, right: 0 }} className="MenuOptions__link" href="/">
-                <div className="MenuOptions__link-icon"><IoMail /></div>
+            <Link className="MenuOptions__link" href="/contact">
+                <div style={{ borderColor: router.pathname === '/contact' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><IoMail /></div>
                 <span className="MenuOptions__link-name">Kontakt</span>
             </Link>
         </div>
@@ -100,6 +103,13 @@ z-index: 1000000000;
 
     &__link {
         margin-left: 5rem;
+
+        &:hover {
+            .MenuOptions__link-icon {
+                background-color: #50FF6C;
+            }
+        }
+
         &-icon {
             width: 3.5rem;
             height: 3.5rem;
@@ -111,6 +121,13 @@ z-index: 1000000000;
             justify-content: center;
             transition: all .5s ease-in-out;
             font-size: 1.5rem;
+
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            border: 4px solid rgba(0,0,0,0);
+
+
         }
         &-name {
             margin-left: 1rem;
@@ -123,6 +140,8 @@ z-index: 1000000000;
         align-items: center;
         display: flex;
         color: white;
+
+
 
     }
 }

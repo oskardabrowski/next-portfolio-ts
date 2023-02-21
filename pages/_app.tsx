@@ -1,6 +1,6 @@
-import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import GlobalStyles from './GlobalStyles';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <>
@@ -13,7 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
       </Head>
-      <Component {...pageProps} />
+      <GlobalStyles>
+        <Component {...pageProps} />
+      </GlobalStyles>
   </>
 
 }
