@@ -1,20 +1,13 @@
-import { Component } from 'react';
-import StyledComponentsRegistry from '../lib/registry';
 import Nav from '../components/nav';
+import { NextPage } from 'next';
 
-class About extends Component {
-  isPageLoading = true;
-  componentDidMount(): void {
-    this.isPageLoading = false;
-  }
-  render() {
+const About:NextPage = () => {
     return (
-    <StyledComponentsRegistry>
-        <Nav />
-        <div>About</div>
-    </StyledComponentsRegistry>
+        <>
+          <Nav isPageLoading={true} />
+          <div>About</div>
+        </>
   )
-  }
 }
 
 export default About;

@@ -1,20 +1,13 @@
-import { Component } from 'react';
-import StyledComponentsRegistry from '../lib/registry';
 import Nav from '../components/nav';
+import { NextPage } from 'next';
 
-class Contact extends Component {
-  isPageLoading = true;
-  componentDidMount(): void {
-    this.isPageLoading = false;
-  }
-  render() {
+const Contact:NextPage = () => {
     return (
-    <StyledComponentsRegistry>
-        <Nav />
-        <div>Contact</div>
-    </StyledComponentsRegistry>
+        <>
+          <Nav isPageLoading={true} />
+          <div>Contact</div>
+        </>
   )
-  }
 }
 
 export default Contact;

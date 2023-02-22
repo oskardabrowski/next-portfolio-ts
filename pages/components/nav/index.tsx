@@ -6,17 +6,26 @@ import {AiOutlineMenu} from 'react-icons/ai';
 import {IoClose, IoPersonSharp, IoMail} from 'react-icons/io5';
 import {AiFillHome, AiFillCode} from 'react-icons/ai';
 import { useRouter } from 'next/router';
+import React, {MouseEvent} from 'react';
 
 interface NavProps {
-  isLoading: boolean;
+  isPageLoading: boolean;
   // other props here
 }
 
-
-const Nav:NextPage = () => {
+const Nav:NextPage<NavProps> = ({isPageLoading}) => {
     const [menuOpened, setMenuOpened] = useState(false);
+    const [pageLoaded, setPageLoaded] = useState(false);
 
     const router = useRouter();
+
+
+    const LinkHandler = (e:MouseEvent, page:string) => {
+        e.preventDefault();
+        setTimeout(() => {
+            router.push(page);
+        }, 3000);
+    };
 
     return <Navigator>
         <button id="OpenCloseMenu" className="MenuButton" onClick={() => setMenuOpened(!menuOpened)}>
@@ -25,19 +34,19 @@ const Nav:NextPage = () => {
         <div className="MenuShadow" style={menuOpened ? { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' } : { clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}></div>
         <div className="MenuBlueShadow" style={menuOpened ? { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' } : { clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}></div>
         <div id="MenuOptions" style={menuOpened ? { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' } : { clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} className="MenuOptions">
-            <Link className="MenuOptions__link" href="/">
+            <Link onClick={(e) => LinkHandler(e, '/')} className="MenuOptions__link" href="/">
                 <div style={{ borderColor: router.pathname === '/' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><AiFillHome /></div>
                 <span className="MenuOptions__link-name">Strona główna</span>
             </Link>
-            <Link className="MenuOptions__link" href="/about">
+            <Link onClick={(e) => LinkHandler(e, '/about')} className="MenuOptions__link" href="/about">
                 <div style={{ borderColor: router.pathname === '/about' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><IoPersonSharp /></div>
                 <span className="MenuOptions__link-name">O mnie</span>
             </Link>
-            <Link className="MenuOptions__link" href="/projects">
+            <Link onClick={(e) => LinkHandler(e, '/projects')} className="MenuOptions__link" href="/projects">
                 <div style={{ borderColor: router.pathname === '/projects' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><AiFillCode /></div>
                 <span className="MenuOptions__link-name">Projekty</span>
             </Link>
-            <Link className="MenuOptions__link" href="/contact">
+            <Link onClick={(e) => LinkHandler(e, '/contact')} className="MenuOptions__link" href="/contact">
                 <div style={{ borderColor: router.pathname === '/contact' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><IoMail /></div>
                 <span className="MenuOptions__link-name">Kontakt</span>
             </Link>
@@ -113,6 +122,8 @@ z-index: 1000000000;
         &-icon {
             width: 3.5rem;
             height: 3.5rem;
+            min-width: 3.5rem;
+            min-height: 3.5rem;
             border-radius: 50%;
             background-color: black;
             color: white;
