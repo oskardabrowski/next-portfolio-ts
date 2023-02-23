@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useState } from 'react';
+import { useState, useEffect, useRef, MutableRefObject } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import {AiOutlineMenu} from 'react-icons/ai';
@@ -35,19 +35,19 @@ const Nav:NextPage<NavProps> = ({isPageLoading}) => {
         <div className="MenuBlueShadow" style={menuOpened ? { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' } : { clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}></div>
         <div id="MenuOptions" style={menuOpened ? { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' } : { clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} className="MenuOptions">
             <Link onClick={(e) => LinkHandler(e, '/')} className="MenuOptions__link" href="/">
-                <div style={{ borderColor: router.pathname === '/' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><AiFillHome /></div>
+                {router.pathname === '/' ? <div style={{ borderColor: '#00C11E' }} className="MenuOptions__link-icon"><AiFillHome /></div> : <div className="MenuOptions__link-icon"><AiFillHome /></div>}
                 <span className="MenuOptions__link-name">Strona główna</span>
             </Link>
             <Link onClick={(e) => LinkHandler(e, '/about')} className="MenuOptions__link" href="/about">
-                <div style={{ borderColor: router.pathname === '/about' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><IoPersonSharp /></div>
+                {router.pathname === '/about' ? <div style={{ borderColor: '#00C11E' }} className="MenuOptions__link-icon"><IoPersonSharp /></div> : <div className="MenuOptions__link-icon"><IoPersonSharp /></div>}
                 <span className="MenuOptions__link-name">O mnie</span>
             </Link>
             <Link onClick={(e) => LinkHandler(e, '/projects')} className="MenuOptions__link" href="/projects">
-                <div style={{ borderColor: router.pathname === '/projects' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><AiFillCode /></div>
+                {router.pathname === '/projects' ? <div style={{ borderColor: '#00C11E' }} className="MenuOptions__link-icon"><AiFillCode /></div> : <div className="MenuOptions__link-icon"><AiFillCode /></div>}
                 <span className="MenuOptions__link-name">Projekty</span>
             </Link>
             <Link onClick={(e) => LinkHandler(e, '/contact')} className="MenuOptions__link" href="/contact">
-                <div style={{ borderColor: router.pathname === '/contact' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><IoMail /></div>
+                {router.pathname === '/contact' ? <div style={{ borderColor: '#00C11E' }} className="MenuOptions__link-icon"><IoMail /></div> : <div className="MenuOptions__link-icon"><IoMail /></div>}
                 <span className="MenuOptions__link-name">Kontakt</span>
             </Link>
         </div>
