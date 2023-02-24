@@ -16,8 +16,11 @@ interface NavProps {
 const Nav:NextPage<NavProps> = ({isPageLoading}) => {
     const [menuOpened, setMenuOpened] = useState(false);
     const [pageLoaded, setPageLoaded] = useState(false);
+    const loader = useRef();
 
     const router = useRouter();
+
+
 
 
     const LinkHandler = (e:MouseEvent, page:string) => {
@@ -35,21 +38,24 @@ const Nav:NextPage<NavProps> = ({isPageLoading}) => {
         <div className="MenuBlueShadow" style={menuOpened ? { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' } : { clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}></div>
         <div id="MenuOptions" style={menuOpened ? { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' } : { clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} className="MenuOptions">
             <Link onClick={(e) => LinkHandler(e, '/')} className="MenuOptions__link" href="/">
-                {router.pathname === '/' ? <div style={{ borderColor: '#00C11E' }} className="MenuOptions__link-icon"><AiFillHome /></div> : <div className="MenuOptions__link-icon"><AiFillHome /></div>}
+                <div style={{ borderColor: router.pathname === '/' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><AiFillHome /></div>
                 <span className="MenuOptions__link-name">Strona główna</span>
             </Link>
             <Link onClick={(e) => LinkHandler(e, '/about')} className="MenuOptions__link" href="/about">
-                {router.pathname === '/about' ? <div style={{ borderColor: '#00C11E' }} className="MenuOptions__link-icon"><IoPersonSharp /></div> : <div className="MenuOptions__link-icon"><IoPersonSharp /></div>}
+                <div style={{ borderColor: router.pathname === '/about' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><IoPersonSharp /></div>
                 <span className="MenuOptions__link-name">O mnie</span>
             </Link>
             <Link onClick={(e) => LinkHandler(e, '/projects')} className="MenuOptions__link" href="/projects">
-                {router.pathname === '/projects' ? <div style={{ borderColor: '#00C11E' }} className="MenuOptions__link-icon"><AiFillCode /></div> : <div className="MenuOptions__link-icon"><AiFillCode /></div>}
+                <div style={{ borderColor: router.pathname === '/projects' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><AiFillCode /></div>
                 <span className="MenuOptions__link-name">Projekty</span>
             </Link>
             <Link onClick={(e) => LinkHandler(e, '/contact')} className="MenuOptions__link" href="/contact">
-                {router.pathname === '/contact' ? <div style={{ borderColor: '#00C11E' }} className="MenuOptions__link-icon"><IoMail /></div> : <div className="MenuOptions__link-icon"><IoMail /></div>}
+                <div style={{ borderColor: router.pathname === '/contact' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><IoMail /></div>
                 <span className="MenuOptions__link-name">Kontakt</span>
             </Link>
+        </div>
+        <div id="Loader">
+            <div>Loading...</div>
         </div>
     </Navigator>
 }
@@ -60,6 +66,20 @@ top: 0rem;
 right: 0rem;
 width: 100%;
 z-index: 1000000000;
+#Loader {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    z-index: 1000000000;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: circle(0% at 50% 50%);
+    transition: all .5s ease-in-out;
+}
 .MenuShadow {
     width: 100%;
     height: 100vh;

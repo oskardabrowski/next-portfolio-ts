@@ -8,6 +8,10 @@ html {
     padding: 0;
 }
 
+body {
+    background-color: black;
+}
+
 a {
     text-decoration: none;
 }

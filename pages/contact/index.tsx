@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 const Contact:NextPage = () => {
     return (
         <>
-          <Nav isPageLoading={true} />
+          <Nav isPageLoading={false} />
           <div>Contact</div>
         </>
   )

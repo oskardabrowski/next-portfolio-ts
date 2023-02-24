@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 const Projects:NextPage = () => {
     return (
         <>
-          <Nav isPageLoading={true} />
+          <Nav isPageLoading={false} />
           <div>Projects</div>
         </>
   )
