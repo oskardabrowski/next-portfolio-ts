@@ -1,15 +1,21 @@
-import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-const GlobalStyles = styled.body`
-margin: 0;
-padding: 0;
+const GlobalStyles = createGlobalStyle`
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
 html {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 body {
     background-color: black;
+    margin: 0px;
+    padding: 0px;
 }
 
 a {
