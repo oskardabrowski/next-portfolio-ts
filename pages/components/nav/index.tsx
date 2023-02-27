@@ -1,33 +1,42 @@
 import type { NextPage } from 'next';
-import { useState, useEffect, useRef, MutableRefObject } from 'react';
+import { useState, useEffect, useRef, ReactNode } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import {AiOutlineMenu} from 'react-icons/ai';
 import {IoClose, IoPersonSharp, IoMail} from 'react-icons/io5';
 import {AiFillHome, AiFillCode} from 'react-icons/ai';
 import { useRouter } from 'next/router';
-import React, {MouseEvent} from 'react';
+import React, {MouseEvent, useContext} from 'react';
+import { GlobalContext } from '../GlobalContext';
 
-interface NavProps {
-  isPageLoading: boolean;
-  // other props here
-}
 
-const Nav:NextPage<NavProps> = ({isPageLoading}) => {
+const Nav:NextPage = () => {
     const [menuOpened, setMenuOpened] = useState(false);
-    const [pageLoaded, setPageLoaded] = useState(false);
-    const loader = useRef();
-
+    const {isPageLoading, setIsPageLoading, pageLoaded, setPageLoaded} = useContext(GlobalContext);
     const router = useRouter();
 
+    const LoaderRef = useRef<HTMLDivElement>(null);
+    const LoaderWhiteRef = useRef<HTMLDivElement>(null);
+    const Shadow1WhiteRef = useRef<HTMLDivElement>(null);
+    const Shadow2WhiteRef = useRef<HTMLDivElement>(null);
 
-
+    useEffect(() => {
+        if(isPageLoading) {
+            LoaderRef.current!.style.clipPath = 'circle(150% at 50% 50%)';
+        } else {
+            setTimeout(() => {
+                LoaderRef.current!.style.clipPath = 'circle(0% at 50% 50%)';
+            }, 1550)
+        }
+    }, [isPageLoading]);
 
     const LinkHandler = (e:MouseEvent, page:string) => {
         e.preventDefault();
+        setIsPageLoading(true);
+        setPageLoaded(false);
         setTimeout(() => {
             router.push(page);
-        }, 3000);
+        }, 2500);
     };
 
     return <Navigator>
@@ -54,8 +63,12 @@ const Nav:NextPage<NavProps> = ({isPageLoading}) => {
                 <span className="MenuOptions__link-name">Kontakt</span>
             </Link>
         </div>
-        <div id="Loader">
-            <div>Loading...</div>
+        <div id="Loader" ref={LoaderRef}>
+            <div ref={LoaderWhiteRef} className="Loader-white" style={{ transition: isPageLoading ? 'all 1.5s ease-in-out' : 'all 1s ease-in-out' , clipPath: isPageLoading ? 'polygon(100% 100%, 100% 0, 0 0, 100% 100%, 0 0, 0 100%, 100% 100%, 0 0)' : 'polygon(100% 0, 100% 0, 100% 0, 100% 0, 0 100%, 0 100%, 0 100%, 0 100%)' }}>
+                <span>Loading...</span>
+            </div>
+            <div ref={Shadow1WhiteRef} className="Loader-shadow1" style={{ transition: isPageLoading ? 'all 1s ease-in-out' : 'all 1.25s ease-in-out' , clipPath: isPageLoading ? 'polygon(100% 100%, 100% 0, 0 0, 100% 100%, 0 0, 0 100%, 100% 100%, 0 0)' : 'polygon(100% 0, 100% 0, 100% 0, 100% 0, 0 100%, 0 100%, 0 100%, 0 100%)' }}></div>
+            <div ref={Shadow2WhiteRef} className="Loader-shadow2" style={{ transition: isPageLoading ? 'all .5s ease-in-out' : 'all 1.5s ease-in-out' , clipPath: isPageLoading ? 'polygon(100% 100%, 100% 0, 0 0, 100% 100%, 0 0, 0 100%, 100% 100%, 0 0)' : 'polygon(100% 0, 100% 0, 100% 0, 100% 0, 0 100%, 0 100%, 0 100%, 0 100%)' }}></div>
         </div>
     </Navigator>
 }
@@ -66,20 +79,78 @@ top: 0rem;
 right: 0rem;
 width: 100%;
 z-index: 1000000000;
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 #Loader {
-    position: absolute;
+    position: fixed;
     top: 0rem;
     left: 0rem;
     z-index: 1000000000;
     width: 100%;
     height: 100vh;
-    background-color: white;
+    background-color: rgba(0,0,0,0);
     display: flex;
     align-items: center;
     justify-content: center;
-    clip-path: circle(0% at 50% 50%);
-    transition: all .5s ease-in-out;
+
 }
+
+.Loader {
+    &-white {
+        background-color: white;
+        z-index: 100;
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        top: 0rem;
+        left: 0rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > span {
+            position: absolute;
+            font-family: 'Arimo';
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(to top right, #0070F3, #50FF6C);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        & > svg {
+            position: absolute;
+        }
+    }
+    &-shadow1 {
+        background-color: rgba(0, 112, 243, .5);
+        z-index: 10;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0rem;
+        left: 0rem;
+    }
+    &-shadow2 {
+        background-color: rgba(80, 255, 108, .5);
+        z-index: 1;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0rem;
+        left: 0rem;
+    }
+}
+
 .MenuShadow {
     width: 100%;
     height: 100vh;

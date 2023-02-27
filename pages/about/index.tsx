@@ -9,7 +9,6 @@ const About:NextPage<LayoutProps> = ({children}) => {
     return (
         <>
           {children}
-          <Nav isPageLoading={false} />
           <div>About</div>
         </>
   )

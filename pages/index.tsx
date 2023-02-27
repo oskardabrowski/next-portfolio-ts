@@ -1,4 +1,3 @@
-import Nav from './components/nav';
 import {ReactNode} from 'react';
 import { NextPage } from 'next';
 import { HomeHeader } from './components/headers/HomeHeader';
@@ -12,7 +11,6 @@ const Home:NextPage<LayoutProps> = ({children}) => {
     return (
         <>
           {children}
-          <Nav isPageLoading={false} />
           <HomeHeader />
         </>
   )

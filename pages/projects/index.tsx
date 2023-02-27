@@ -1,4 +1,3 @@
-import Nav from '../components/nav';
 import { NextPage } from 'next';
 import { ReactNode } from 'react';
 interface LayoutProps {
@@ -9,7 +8,6 @@ const Projects:NextPage<LayoutProps> = ({children}) => {
     return (
         <>
           {children}
-          <Nav isPageLoading={false} />
           <div>Projects</div>
         </>
   )
