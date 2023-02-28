@@ -361,3 +361,39 @@
 					clearTimeout(a);
 				});
 	})();
+
+// var particles1 =
+// particleground(document.getElementById("particles-foreground"), {
+// 	dotColor: "rgba(0, 112, 243, 1)",
+// 	lineColor: "rgba(0, 174, 255, 0.5)",
+// 	minSpeedX: 0.3,
+// 	maxSpeedX: 0.6,
+// 	minSpeedY: 0.3,
+// 	maxSpeedY: 0.6,
+// 	density: 25000, // One particle every n pixels
+// 	curvedLines: false,
+// 	proximity: 250, // How close two dots need to be before they join
+// 	parallaxMultiplier: 15, // Lower the number is more extreme parallax
+// 	particleRadius: 5, // Dot size
+// });
+
+// var particles2 =
+// particleground(document.getElementById("particles-background"), {
+// 	dotColor: "rgba(0, 193, 30, 0.5)",
+// 	lineColor: "rgba(80, 255, 108, 0.25)",
+// 	minSpeedX: 0.075,
+// 	maxSpeedX: 0.15,
+// 	minSpeedY: 0.075,
+// 	maxSpeedY: 0.15,
+// 	density: 5000, // One particle every n pixels
+// 	curvedLines: false,
+// 	proximity: 50, // How close two dots need to be before they join
+// 	parallaxMultiplier: 20, // Lower the number is more extreme parallax
+// 	particleRadius: 3, // Dot size
+// });
+
+// if (window.location.pathname != "/") {
+// 	particles1.destroy();
+// 	particles2.destroy();
+// 	console.log("Particles destroy");
+// }

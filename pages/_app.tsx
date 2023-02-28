@@ -2,11 +2,16 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import GlobalStyles from './GlobalStyles';
 import StyledComponentsRegistry from './lib/registry';
-import { GlobalContextProvider } from './components/GlobalContext';
+import GlobalContextProvider from './components/GlobalContext';
 import Nav from './components/nav';
 import SetIsPageLoaded from './components/nav/SetIsPageLoaded';
+import { useRouter } from 'next/router';
+import Script from 'next/script';
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+  const router = useRouter();
+
   return <StyledComponentsRegistry>
       <>
         <Head>
@@ -16,8 +21,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
-          <script defer src="./vendors/particles.js"></script>
         </Head>
+        <Script defer src="./vendors/particles.js" />
         <GlobalContextProvider>
           <Component {...pageProps}>
             <Nav />

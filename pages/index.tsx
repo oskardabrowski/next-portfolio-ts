@@ -1,6 +1,6 @@
 import {ReactNode} from 'react';
 import { NextPage } from 'next';
-import { HomeHeader } from './components/headers/HomeHeader';
+import HomeHeader from './components/headers/HomeHeader';
 import GlobalStyles from './GlobalStyles';
 
 interface LayoutProps {

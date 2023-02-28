@@ -13,9 +13,8 @@ interface ProviderProps {
 }
 
 export const GlobalContext = createContext({} as GlobalProps);
-
-export const GlobalContextProvider:NextPage<ProviderProps> = ({children}) => {
-    const [isPageLoading, setIsPageLoading] = useState(false);
+const GlobalContextProvider:NextPage<ProviderProps> = ({children}) => {
+    const [isPageLoading, setIsPageLoading] = useState(true);
     const [pageLoaded, setPageLoaded] = useState(true);
     return <GlobalContext.Provider value={{
         isPageLoading,
@@ -26,3 +25,5 @@ export const GlobalContextProvider:NextPage<ProviderProps> = ({children}) => {
         {children}
      </GlobalContext.Provider>
 }
+
+export default GlobalContextProvider;

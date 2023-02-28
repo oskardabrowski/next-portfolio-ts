@@ -32,6 +32,9 @@ const Nav:NextPage = () => {
 
     const LinkHandler = (e:MouseEvent, page:string) => {
         e.preventDefault();
+
+        if(router.pathname === page) return;
+
         setIsPageLoading(true);
         setPageLoaded(false);
         setTimeout(() => {
