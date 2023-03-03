@@ -1,4 +1,3 @@
-import Nav from '../components/nav';
 import { NextPage } from 'next';
 import { ReactNode } from 'react';
 interface LayoutProps {

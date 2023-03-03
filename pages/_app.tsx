@@ -1,10 +1,10 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import GlobalStyles from './GlobalStyles';
+import GlobalStyles from '../components/GlobalStyles';
 import StyledComponentsRegistry from './lib/registry';
-import GlobalContextProvider from './components/GlobalContext';
-import Nav from './components/nav';
-import SetIsPageLoaded from './components/nav/SetIsPageLoaded';
+import GlobalContextProvider from '../components/GlobalContext';
+import Nav from '../components/nav';
+import SetIsPageLoaded from '../components/nav/SetIsPageLoaded';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 
@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
         </Head>
-        <Script defer src="./vendors/particles.js" />
+        <Script defer src="./vendors/particles.js" strategy="worker" />
         <GlobalContextProvider>
           <Component {...pageProps}>
             <Nav />

@@ -6,13 +6,13 @@ import {AiOutlineMenu} from 'react-icons/ai';
 import {IoClose, IoPersonSharp, IoMail} from 'react-icons/io5';
 import {AiFillHome, AiFillCode} from 'react-icons/ai';
 import { useRouter } from 'next/router';
-import React, {MouseEvent, useContext} from 'react';
+import React, {useContext} from 'react';
 import { GlobalContext } from '../GlobalContext';
 
 
 const Nav:NextPage = () => {
     const [menuOpened, setMenuOpened] = useState(false);
-    const {isPageLoading, setIsPageLoading, pageLoaded, setPageLoaded} = useContext(GlobalContext);
+    const {isPageLoading, setIsPageLoading, setPageLoaded, LinkHandler} = useContext(GlobalContext);
     const router = useRouter();
 
     const LoaderRef = useRef<HTMLDivElement>(null);
@@ -29,18 +29,6 @@ const Nav:NextPage = () => {
             }, 1550)
         }
     }, [isPageLoading]);
-
-    const LinkHandler = (e:MouseEvent, page:string) => {
-        e.preventDefault();
-
-        if(router.pathname === page) return;
-
-        setIsPageLoading(true);
-        setPageLoaded(false);
-        setTimeout(() => {
-            router.push(page);
-        }, 2500);
-    };
 
     return <Navigator>
         <button id="OpenCloseMenu" className="MenuButton" onClick={() => setMenuOpened(!menuOpened)}>
@@ -81,6 +69,7 @@ position: fixed;
 top: 0rem;
 right: 0rem;
 width: 100%;
+height: 0%;
 z-index: 1000000000;
 
 @keyframes rotate {
