@@ -183,9 +183,14 @@ overflow: hidden;
 
 @keyframes goRight {
   0% {
+    opacity: 0;
     left: -150%;
   }
+  50% {
+    opacity: 0;
+  }
   100% {
+    opacity: 1;
     left: 0%;
   }
 }

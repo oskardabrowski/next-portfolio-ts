@@ -10,7 +10,7 @@ const ShortDesc:NextPage = () => {
 
   return (
     <ShortDescStyles>
-      <h2 className="Header">Short about me<span className="colored">.</span></h2>
+      <h2 className="Header">About me<span className="colored">.</span></h2>
       <div className="Body">
         <div className="Body-img">
           <div className="Body-img-container coloredBackground"></div>
