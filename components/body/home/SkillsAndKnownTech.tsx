@@ -36,6 +36,23 @@ const SkillsAndKnownTech:NextPage = () => {
             <h4 className="Header">Known technologies<span className="colored">.</span></h4>
             <p className="Info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor volutpat erat, at mollis erat fringilla sed. Fusce non lectus augue. Ut pellentesque aliquet pharetra. Aliquam ac orci ut nibh bibendum suscipit.
             Nulla pretium euismod varius. Etiam dignissim ante at magna commodo scelerisque. In at nunc dolor.</p>
+            <div className="IconsContainer">
+                {testArr.map((el, index):ReactNode => {
+                    return <div key={index} className="SkillContainer">
+                        <button className="Icon">
+                            <div className="Icon-hidden"><SiPython /></div>
+                            <span className="span1"></span>
+                            <span className="span2"></span>
+                            <span className="span3"></span>
+                            <span className="span4"></span>
+                            <span className="span5"></span>
+                            <span className="span6"></span>
+                            <span className="span7"></span>
+                            <span className="span8"></span>
+                        </button>
+                    </div>;
+                })}
+            </div>
         </div>
         <div></div>
         <div></div>
@@ -47,9 +64,17 @@ const SkillsAndTech = styled.section`
 width: 100%;
 min-height: 100vh;
 color: white;
-padding-top: 7.5rem;
+padding: 7.5rem 0rem 7.5rem 0rem;
 display: flex;
 flex-direction: column;
+
+.IconsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
 
 .SkillContainer {
     margin: 2.5rem;
@@ -84,6 +109,10 @@ flex-direction: column;
     overflow: visible;
 
     &:hover {
+        & > span {
+            background-color: #00C11E;
+        }
+        color: #50FF6C;
         cursor: pointer;
         width: 7.5rem;
         height: 7.5rem;
@@ -94,6 +123,7 @@ flex-direction: column;
         width: 2rem;
         background-color: #0070F3;
         position: absolute;
+        transition: all .5s ease-in-out;
     }
 
     & > .span1 {
