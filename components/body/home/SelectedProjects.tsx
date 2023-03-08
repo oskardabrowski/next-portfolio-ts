@@ -1,10 +1,62 @@
 import { NextPage } from "next";
+import { useEffect } from "react";
 import styled from 'styled-components';
-import Slider from './EnchantedSlider';
+import Slider from "./Slider";
 
 const SelectedProjects:NextPage = () => {
+
+    useEffect(() => {
+        var options = {
+            easing: 0.075,
+            duration: 500,
+            dragSpeed: 1.75,
+        }
+
+        // let's go!
+        var slider = new Slider(options);
+
+        return () => {
+            slider.destroy();
+        }
+    },[])
+
   return (
-    <ProjectsSlider>SelectedProjects</ProjectsSlider>
+    <ProjectsSlider>
+        <div id="canvas"></div>
+        <div id="planes">
+
+         <div className="plane-wrapper">
+                <div className="plane">
+                    <img src="images/testimg.jpg" alt="First slide" />
+                </div>
+         </div>
+
+         <div className="plane-wrapper">
+                <div className="plane">
+                    <img src="images/testimg.jpg" alt="Second slide" />
+                </div>
+         </div>
+
+         <div className="plane-wrapper">
+                <div className="plane">
+                    <img src="images/testimg.jpg" alt="Third slide" />
+                </div>
+         </div>
+         <div className="plane-wrapper">
+                <div className="plane">
+                    <img src="images/testimg.jpg" alt="Third slide" />
+                </div>
+         </div>
+         <div className="plane-wrapper">
+                <div className="plane">
+                    <img src="images/testimg.jpg" alt="Third slide" />
+                </div>
+         </div>
+
+
+      </div>
+
+    </ProjectsSlider>
   )
 }
 
@@ -12,68 +64,31 @@ const ProjectsSlider = styled.section`
 
 width: 100%;
 height: 100vh;
-
+overflow: hidden;
 
 @media screen {
 
-
-        min-height: 100vh;
-
-        margin: 0;
-        font-size: 18px;
-        line-height: 1.4;
-        overflow: hidden;
-
-    /*** canvas ***/
-
-    /* our canvas will have the size of our window */
-    #canvas {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        height: 100vh;
-        z-index: 1;
-    }
-
-    /*** content ***/
-
-    #content {
-        position: relative;
-        z-index: 2;
-        overflow: hidden;
-    }
-
-    #title {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        left: 20px;
-        z-index: 1;
-        pointer-events: none;
-        font-size: 1.5em;
-        line-height: 1;
-        margin: 0;
-        text-transform: uppercase;
-        color: white;
-        text-align: center;
-    }
-
     #planes {
-        width: calc(((100vw / 1.75) + 10vw) * 8); /* width of items * number of items */
-
+        /* width of items * number of items */
+        width: calc(((100vw / 1.75)) * 5);
         padding: 0 2.5vw;
         height: 100vh;
         display: flex;
         align-items: center;
+        transition: background-color 0.5s;
 
-        cursor: move;
+        &:hover {
+            cursor: grab;
+        }
+        &:active {
+            cursor: grabbing;
+        }
     }
 
     .plane-wrapper {
         position: relative;
 
-        width: calc(100vw / 1.75);
+        width: calc(100vw / 1.75 );
         height: 70vh;
         margin: auto 5vw;
         text-align: center;
@@ -82,7 +97,6 @@ height: 100vh;
     /* disable pointer events and text selection during drag */
     #planes.dragged .plane-wrapper {
         pointer-events: none;
-
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         -khtml-user-select: none;
@@ -101,22 +115,10 @@ height: 100vh;
         font-weight: 700;
         line-height: 1.2;
         text-transform: uppercase;
-        color: black;
-        text-stroke: 1px white;
-        -webkit-text-stroke: 1px white;
 
-        opacity: 0;
-
-        transition: color 0.5s, opacity 0.5s;
+        transition: color 0.5s;
     }
 
-    #planes.dragged .plane-title {
-        color: transparent;
-    }
-
-    .plane-wrapper.loaded .plane-title {
-        opacity: 1;
-    }
 
     .plane {
         position: absolute;
@@ -124,11 +126,19 @@ height: 100vh;
         right: 0;
         bottom: 0;
         left: 0;
+        display: flex;
+        overflow: hidden;
+        transition: filter 0.5s;
+
+
     }
 
     .plane img {
-        /* hide original images if there's no WebGL error */
-        display: none;
+        display: block;
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+
         /* prevent original image from dragging */
         pointer-events: none;
         -webkit-user-drag: none;
@@ -143,49 +153,15 @@ height: 100vh;
         right: 20px;
         bottom: 20px;
         left: 20px;
+        z-index: 1;
         pointer-events: none;
         font-size: 0.9em;
         text-transform: uppercase;
-        color: #888;
+        color: #032f4d;
         text-align: center;
     }
 
-
-    /*** handling WebGL errors ***/
-
-    .no-curtains #planes {
-        transition: background-color 0.5s;
-    }
-
-    .no-curtains #planes.dragged {
-        background-color: #0d0d0d;
-    }
-
-    .no-curtains .plane-title {
-        opacity: 1;
-    }
-
-    .no-curtains .plane {
-        display: flex;
-        overflow: hidden;
-        transition: filter 0.5s;
-    }
-
-    .no-curtains #planes.dragged .plane {
-        filter: grayscale(1);
-    }
-
-    .no-curtains .plane img {
-        display: block;
-        min-width: 100%;
-        min-height: 100%;
-        object-fit: cover;
-    }
-
 }
-
-
-
 
 @media screen and (orientation: portrait) {
 
@@ -203,8 +179,6 @@ height: 100vh;
     }
 
     .plane-wrapper {
-        position: relative;
-
         width: 70vw;
         height: calc(100vh / 1.75);
         margin: 5vw 0;
@@ -215,7 +189,6 @@ height: 100vh;
     }
 
 }
-
 
 `;
 
