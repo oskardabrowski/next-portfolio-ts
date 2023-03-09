@@ -22,6 +22,7 @@ const SelectedProjects:NextPage = () => {
 
   return (
     <ProjectsSlider>
+        <h2 className="Header">Selected projects<span className="colored">.</span></h2>
         <div id="canvas"></div>
         <div id="planes">
 
@@ -65,6 +66,15 @@ const ProjectsSlider = styled.section`
 width: 100%;
 height: 100vh;
 overflow: hidden;
+
+.Header {
+  font-family: 'Arimo';
+  font-size: 2.5rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  color: white;
+}
+
 
 @media screen {
 

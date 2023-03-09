@@ -27,13 +27,13 @@ const HomeHeader:NextPage = () => {
                 background: {
                     color: "transparent",
                 },
-                fpsLimit: 120,
+                fpsLimit: 60,
                 fullScreen: false,
                 interactivity: {
                     events: {
                         onClick: {
                             enable: true,
-                            mode: "push",
+                            mode: "repulse",
                         },
                         onHover: {
                             enable: true,
@@ -42,9 +42,6 @@ const HomeHeader:NextPage = () => {
                         resize: true,
                     },
                     modes: {
-                        push: {
-                            quantity: 4,
-                        },
                         repulse: {
                             distance: 150,
                             duration: 0.4,
@@ -72,7 +69,12 @@ const HomeHeader:NextPage = () => {
                         },
                         random: false,
                         speed: 2,
+
                         straight: false,
+                    },
+                    gravity: {
+                      enable: true,
+                      maxSpeed: 3
                     },
                     number: {
                         density: {
