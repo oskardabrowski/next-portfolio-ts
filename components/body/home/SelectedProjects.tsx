@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import styled from 'styled-components';
 import Slider from "./Slider";
 
+import App from "./AwesomeSlider";
+
 const SelectedProjects:NextPage = () => {
 
     useEffect(() => {
@@ -22,7 +24,7 @@ const SelectedProjects:NextPage = () => {
 
   return (
     <ProjectsSlider>
-        <h2 className="Header">Selected projects<span className="colored">.</span></h2>
+        {/* <h2 className="Header">Selected projects<span className="colored">.</span></h2>
         <div id="canvas"></div>
         <div id="planes">
 
@@ -55,7 +57,9 @@ const SelectedProjects:NextPage = () => {
          </div>
 
 
-      </div>
+      </div> */}
+
+<App />
 
     </ProjectsSlider>
   )
