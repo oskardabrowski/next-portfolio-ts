@@ -8,7 +8,7 @@ const About:NextPage<LayoutProps> = ({children}) => {
     return (
         <>
           {children}
-          <div>About</div>
+          <div></div>
         </>
   )
 }

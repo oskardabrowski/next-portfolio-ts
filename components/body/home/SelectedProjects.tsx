@@ -2,8 +2,7 @@ import { NextPage } from "next";
 import { useEffect } from "react";
 import styled from 'styled-components';
 import Slider from "./Slider";
-
-import App from "./AwesomeSlider";
+import * as VFX from 'react-vfx';
 
 const SelectedProjects:NextPage = () => {
 
@@ -14,7 +13,6 @@ const SelectedProjects:NextPage = () => {
             dragSpeed: 1.75,
         }
 
-        // let's go!
         var slider = new Slider(options);
 
         return () => {
@@ -24,8 +22,10 @@ const SelectedProjects:NextPage = () => {
 
   return (
     <ProjectsSlider>
-        {/* <h2 className="Header">Selected projects<span className="colored">.</span></h2>
-        <div id="canvas"></div>
+
+
+        <h2 className="Header">Selected projects<span className="colored">.</span></h2>
+
         <div id="planes">
 
          <div className="plane-wrapper">
@@ -55,11 +55,9 @@ const SelectedProjects:NextPage = () => {
                     <img src="images/testimg.jpg" alt="Third slide" />
                 </div>
          </div>
+      </div>
 
 
-      </div> */}
-
-<App />
 
     </ProjectsSlider>
   )
@@ -159,7 +157,6 @@ overflow: hidden;
         -khtml-user-drag: none;
         -moz-user-drag: none;
         -o-user-drag: none;
-        user-drag: none;
     }
 
     #drag-tip {

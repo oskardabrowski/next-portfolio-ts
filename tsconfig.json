@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/body/home/AwesomeSlider.js", "components/body/home/blocks.jsx", "components/body/home/slider/Plane.js", "components/body/home/slider/CustomMaterial.js", "components/body/home/slider/Effects.js"],
   "exclude": ["node_modules"]
 }
