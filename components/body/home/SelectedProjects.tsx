@@ -2,7 +2,6 @@ import { NextPage } from "next";
 import { useEffect } from "react";
 import styled from 'styled-components';
 import Slider from "./Slider";
-import * as VFX from 'react-vfx';
 
 const SelectedProjects:NextPage = () => {
 
@@ -24,15 +23,15 @@ const SelectedProjects:NextPage = () => {
     <ProjectsSlider>
 
 
-        <h2 className="Header">Selected projects<span className="colored">.</span></h2>
+        <h4 className="Header">Selected projects<span className="colored">.</span></h4>
 
         <div id="planes">
 
-         <div className="plane-wrapper">
+         <a href="#" className="plane-wrapper">
                 <div className="plane">
                     <img src="images/testimg.jpg" alt="First slide" />
                 </div>
-         </div>
+         </a>
 
          <div className="plane-wrapper">
                 <div className="plane">
@@ -40,6 +39,11 @@ const SelectedProjects:NextPage = () => {
                 </div>
          </div>
 
+         <div className="plane-wrapper">
+                <div className="plane">
+                    <img src="images/testimg.jpg" alt="Third slide" />
+                </div>
+         </div>
          <div className="plane-wrapper">
                 <div className="plane">
                     <img src="images/testimg.jpg" alt="Third slide" />
@@ -82,7 +86,7 @@ overflow: hidden;
 
     #planes {
         /* width of items * number of items */
-        width: calc(((100vw / 1.75)) * 5);
+        width: calc(((100vw / 1.75)) * 6);
         padding: 0 2.5vw;
         height: 100vh;
         display: flex;
