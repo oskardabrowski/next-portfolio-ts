@@ -113,7 +113,7 @@ z-index: 1000000000;
             font-family: 'Arimo';
             font-size: 2rem;
             font-weight: bold;
-            background: linear-gradient(to top right, #0070F3, #50FF6C);
+            background: linear-gradient(to top right, #0070F3, #00AEFF);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
