@@ -54,11 +54,6 @@ const SelectedProjects:NextPage = () => {
                     <img src="images/testimg.jpg" alt="Third slide" />
                 </div>
          </div>
-         <div className="plane-wrapper">
-                <div className="plane">
-                    <img src="images/testimg.jpg" alt="Third slide" />
-                </div>
-         </div>
       </div>
 
 
@@ -86,7 +81,7 @@ overflow: hidden;
 
     #planes {
         /* width of items * number of items */
-        width: calc(((100vw / 1.75)) * 6);
+        width: calc(((100vw / 1.75)) * 5);
         padding: 0 2.5vw;
         height: 100vh;
         display: flex;

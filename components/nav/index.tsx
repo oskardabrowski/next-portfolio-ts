@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useState, useEffect, useRef, ReactNode } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import {AiOutlineMenu} from 'react-icons/ai';
@@ -12,7 +12,7 @@ import { GlobalContext } from '../GlobalContext';
 
 const Nav:NextPage = () => {
     const [menuOpened, setMenuOpened] = useState(false);
-    const {isPageLoading, setIsPageLoading, setPageLoaded, LinkHandler} = useContext(GlobalContext);
+    const {isPageLoading, LinkHandler} = useContext(GlobalContext);
     const router = useRouter();
 
     const LoaderRef = useRef<HTMLDivElement>(null);

@@ -68,7 +68,9 @@ const HomeHeader:NextPage = () => {
                             default: "bounce",
                         },
                         random: false,
-                        speed: 2,
+                        speed: 1,
+                        bounce: false,
+                        // decay: 2,
 
                         straight: false,
                     },
