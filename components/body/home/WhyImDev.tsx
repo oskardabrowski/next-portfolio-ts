@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {IoMdRocket} from "react-icons/io";
 import {AiFillCloud} from 'react-icons/ai';
 import {BsFillCloudsFill} from 'react-icons/bs';
+import {GiBrain} from 'react-icons/gi';
 
 const WhyImDev:NextPage = () => {
   return (
@@ -16,7 +17,7 @@ const WhyImDev:NextPage = () => {
         <p><span className="colored">Sky</span> is not the limit</p>
       </article>
       <article className="Part2 Text">
-        <p>if you have a great imagination<span className="colored">.</span></p>
+        <p>our <span className="colored">mind</span> is.</p>
       </article>
     </SkyIsNoLimit>
   )
@@ -76,7 +77,7 @@ position: relative;
 .Part2 {
   position: absolute;
   bottom: 30%;
-  right: 25%;
+  right: 35%;
 }
 `;
 

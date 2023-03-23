@@ -2,6 +2,8 @@ import { NextPage } from "next";
 import styled from "styled-components";
 import {SiPython} from 'react-icons/si';
 import { ReactNode } from "react";
+import technologies from "../../data/technologies";
+import { knownTechnologies } from "../../data/technologies";
 
 const SkillsAndKnownTech:NextPage = () => {
     const testArr:string[] = ['1','2','3','4','5'];
@@ -15,10 +17,10 @@ const SkillsAndKnownTech:NextPage = () => {
             <p className="Info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor volutpat erat, at mollis erat fringilla sed. Fusce non lectus augue. Ut pellentesque aliquet pharetra. Aliquam ac orci ut nibh bibendum suscipit.
             Nulla pretium euismod varius. Etiam dignissim ante at magna commodo scelerisque. In at nunc dolor.</p>
             <div className="IconsContainer">
-                {testArr.map((el, index):ReactNode => {
+                {technologies.map((el, index):ReactNode => {
                     return <div key={index} className="SkillContainer">
                         <button className="Icon">
-                            <div className="Icon-hidden"><SiPython /></div>
+                            <div className="Icon-hidden"><el.ico /></div>
                             <span className="span1"></span>
                             <span className="span2"></span>
                             <span className="span3"></span>
@@ -37,10 +39,10 @@ const SkillsAndKnownTech:NextPage = () => {
             <p className="Info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor volutpat erat, at mollis erat fringilla sed. Fusce non lectus augue. Ut pellentesque aliquet pharetra. Aliquam ac orci ut nibh bibendum suscipit.
             Nulla pretium euismod varius. Etiam dignissim ante at magna commodo scelerisque. In at nunc dolor.</p>
             <div className="IconsContainer">
-                {testArr.map((el, index):ReactNode => {
+                {knownTechnologies.map((el, index):ReactNode => {
                     return <div key={index} className="SkillContainer">
                         <button className="Icon">
-                            <div className="Icon-hidden"><SiPython /></div>
+                            <div className="Icon-hidden" ><el.ico /></div>
                             <span className="span1"></span>
                             <span className="span2"></span>
                             <span className="span3"></span>
@@ -78,17 +80,17 @@ flex-direction: column;
 
 .SkillContainer {
     margin: 2.5rem;
-    width: 7.5rem;
-    height: 7.5rem;
+    width: 8.5rem;
+    height: 8.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .Icon {
-    width: 6.5rem;
-    height: 6.5rem;
-    font-size: 3rem;
+    width: 7.5rem;
+    height: 7.5rem;
+    font-size: 4rem;
     color: white;
     position: relative;
     border: none;
@@ -114,8 +116,8 @@ flex-direction: column;
         }
         color: #50FF6C;
         cursor: pointer;
-        width: 7.5rem;
-        height: 7.5rem;
+        width: 8.5rem;
+        height: 8.5rem;
     }
 
     & > span {
