@@ -3,20 +3,46 @@ import styled from "styled-components";
 import {IoMdRocket} from "react-icons/io";
 import {AiFillCloud} from 'react-icons/ai';
 import {BsFillCloudsFill} from 'react-icons/bs';
-import {GiBrain} from 'react-icons/gi';
+import { ElementRef, Ref, RefObject, useEffect, useMemo, useRef, useState } from "react";
+
+function isInViewport(element:Element) {
+  const rect = element.getBoundingClientRect();
+  const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+  const windowWidth = (window.innerWidth || document.documentElement.clientWidth);
+
+  const vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0);
+  const horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0);
+
+  return (vertInView && horInView);
+}
 
 const WhyImDev:NextPage = () => {
+  const ref = useRef(null);
+
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ref.current) {
+        setIsIntersecting(isInViewport(ref.current));
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <SkyIsNoLimit>
+    <SkyIsNoLimit ref={ref}>
       <article className="Picture">
-        <AiFillCloud className="Picture-cloud1" />
-        <IoMdRocket className="Picture-rocket colored" />
-        <BsFillCloudsFill className="Picture-cloud2" />
+        <AiFillCloud className="Picture-cloud1" style={{opacity: isIntersecting ? '1' : '0'}}/>
+        <IoMdRocket className="Picture-rocket colored" style={{opacity: isIntersecting ? '1' : '0'}}/>
+        <BsFillCloudsFill className="Picture-cloud2" style={{opacity: isIntersecting ? '1' : '0'}}/>
       </article>
-      <article className="Part1 Text">
+      <article style={{left: isIntersecting ? '25%' : '-50%'}} className="Part1 Text">
         <p><span className="colored">Sky</span> is not the limit</p>
       </article>
-      <article className="Part2 Text">
+      <article style={{right: isIntersecting ? '35%' : '-50%'}} className="Part2 Text">
         <p>our <span className="colored">mind</span> is.</p>
       </article>
     </SkyIsNoLimit>
@@ -27,7 +53,7 @@ const SkyIsNoLimit = styled.section`
 width: 100%;
 height: 100vh;
 position: relative;
-
+overflow: hidden;
 .Picture {
   width: 100%;
   height: 100vh;
@@ -41,6 +67,8 @@ position: relative;
     transform: translate(-50%, -50%);
     font-size: 7.5rem;
     color: white;
+    transition-delay: 1;
+    transition: all 2s ease-in-out;
   }
   &-cloud2 {
     position: absolute;
@@ -49,6 +77,8 @@ position: relative;
     transform: translate(-50%, -50%);
     font-size: 7.5rem;
     color: white;
+    transition-delay: 2;
+    transition: all 3s ease-in-out;
   }
 
   &-rocket {
@@ -58,6 +88,8 @@ position: relative;
     transform: translate(-50%, -50%);
     transform: rotate(-45deg);
     font-size: 7.5rem;
+    transition-delay: 3;
+    transition: all 4s ease-in-out;
   }
 }
 
@@ -71,13 +103,15 @@ position: relative;
 .Part1 {
   position: absolute;
   top: 30%;
-  left: 25%;
+  transition-delay: 2;
+  transition: all 3s ease-in-out;
 }
 
 .Part2 {
   position: absolute;
   bottom: 30%;
-  right: 35%;
+  transition-delay: 2;
+  transition: all 3s ease-in-out;
 }
 `;
 
