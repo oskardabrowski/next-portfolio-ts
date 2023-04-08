@@ -4,16 +4,37 @@ import {AiFillGithub, AiFillLinkedin} from 'react-icons/ai';
 import {IoIosMail} from 'react-icons/io';
 import Link from 'next/link';
 import { GlobalContext } from '../GlobalContext';
-import { useContext } from 'react';
+import { useContext, useRef, useState, useEffect } from 'react';
 
 const Footer:NextPage = () => {
-  const {LinkHandler} = useContext(GlobalContext);
+  const ref = useRef(null);
+
+  const {LinkHandler, isInViewport} = useContext(GlobalContext);
+
+   const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ref.current) {
+        if(isInViewport(ref.current)) {
+          setTimeout(() => {
+            setIsIntersecting(true);
+          }, 250);
+        } else {
+          setIsIntersecting(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
-    <FooterElement>
-        <div className="Footer First">
+    <FooterElement ref={ref}>
+        <div className="Footer First" style={{ left: isIntersecting ? '-10%' : '-110%' }}>
           <div>Copyright © Oskar Dąbrowski {new Date().getFullYear()}</div>
         </div>
-        <div className="Footer Second">
+        <div className="Footer Second" style={{ right: isIntersecting ? '-10%' : '-110%' }}>
           <div>
             <a href="https://github.com/oskardabrowski" target='blank'><AiFillGithub /></a>
             <a href="https://www.linkedin.com/in/oskar-d%C4%85browski-024455226/" target='blank'><AiFillLinkedin /></a>
@@ -40,6 +61,7 @@ margin-top: 10rem;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    transition: all 1.5s ease-in-out;
     filter: sepia(100%) hue-rotate(190deg) saturate(900%);
 
 }

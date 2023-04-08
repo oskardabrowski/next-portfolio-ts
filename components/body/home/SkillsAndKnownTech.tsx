@@ -1,25 +1,93 @@
 import { NextPage } from "next";
 import styled from "styled-components";
-import {SiPython} from 'react-icons/si';
-import { ReactNode } from "react";
+import { ReactNode ,useContext, useEffect, useState, useRef } from "react";
 import technologies from "../../data/technologies";
 import { knownTechnologies } from "../../data/technologies";
+import { GlobalContext } from "../../GlobalContext";
 
 const SkillsAndKnownTech:NextPage = () => {
-    const testArr:string[] = ['1','2','3','4','5'];
+    const ref = useRef(null);
+    const ref2 = useRef(null);
+    const ref3 = useRef(null);
+    const ref4 = useRef(null);
+
+  const {LinkHandler, isInViewport} = useContext(GlobalContext);
+
+   const [isIntersecting, setIsIntersecting] = useState(false);
+   const [isIntersectingKnownHead, setIsIntersectingKnownHead] = useState(false);
+   const [isIntersectingSkills, setIsIntersectingSkills] = useState(false);
+   const [iconSize, setIconSize] = useState(false);
+   const [isIntersectingKnown, setIsIntersectingKnown] = useState(false);
+   const [iconKnownSize, setKnownIconSize] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ref.current) {
+        if(isInViewport(ref.current)) {
+            setTimeout(() => {
+                setIsIntersecting(true);
+            }, 250);
+        } else {
+            setIsIntersecting(false);
+        }
+      }
+      if (ref4.current) {
+        if(isInViewport(ref4.current)) {
+            setTimeout(() => {
+                setIsIntersectingKnownHead(true);
+            }, 250);
+        } else {
+            setIsIntersectingKnownHead(false);
+        }
+      }
+      if (ref2.current) {
+        if(isInViewport(ref2.current)) {
+            setTimeout(() => {
+                setTimeout(() => {
+                    setIsIntersectingSkills(true);
+                    setTimeout(() => {
+                        setIconSize(true);
+                    }, 1000);
+                }, 800);
+            }, 250);
+        } else {
+            setIsIntersectingSkills(false);
+            setIconSize(false);
+        }
+      }
+      if (ref3.current) {
+        if(isInViewport(ref3.current)) {
+            setTimeout(() => {
+                setTimeout(() => {
+                    setIsIntersectingKnown(true);
+                    setTimeout(() => {
+                        setKnownIconSize(true);
+                    }, 1000);
+                }, 1000);
+            }, 250);
+        } else {
+            setIsIntersectingKnown(false);
+            setKnownIconSize(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
-    <SkillsAndTech>
-        <div className="Head"><h3 className="Header">Skills and known technologies<span className="colored">.</span></h3></div>
-        <p className="Info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor volutpat erat, at mollis erat fringilla sed. Fusce non lectus augue. Ut pellentesque aliquet pharetra. Aliquam ac orci ut nibh bibendum suscipit.
+    <SkillsAndTech ref={ref}>
+        <div className="Head"><h3 className="Header" style={{ left: isIntersecting ? '0%' : '-100%'}}>Skills and known technologies<span className="colored">.</span></h3></div>
+        <p className="Info" style={{ left: isIntersecting ? '0%' : '-100%'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor volutpat erat, at mollis erat fringilla sed. Fusce non lectus augue. Ut pellentesque aliquet pharetra. Aliquam ac orci ut nibh bibendum suscipit.
             Nulla pretium euismod varius. Etiam dignissim ante at magna commodo scelerisque. In at nunc dolor.</p>
         <div className="Container">
-            <h4 className="Header">Skills<span className="colored">.</span></h4>
-            <p className="Info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor volutpat erat, at mollis erat fringilla sed. Fusce non lectus augue. Ut pellentesque aliquet pharetra. Aliquam ac orci ut nibh bibendum suscipit.
+            <h4 className="Header" style={{ right: isIntersecting ? '0%' : '-100%'}}>Skills<span className="colored">.</span></h4>
+            <p className="Info" style={{ right: isIntersecting ? '0%' : '-100%'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor volutpat erat, at mollis erat fringilla sed. Fusce non lectus augue. Ut pellentesque aliquet pharetra. Aliquam ac orci ut nibh bibendum suscipit.
             Nulla pretium euismod varius. Etiam dignissim ante at magna commodo scelerisque. In at nunc dolor.</p>
-            <div className="IconsContainer">
+            <div className="IconsContainer" ref={ref2}>
                 {technologies.map((el, index):ReactNode => {
                     return <div key={index} className="SkillContainer">
-                        <button className="Icon">
+                        <button className={`Icon ${isIntersectingSkills ? 'iconTransform' : ''} ${iconSize ? 'IconSize' : ''}`}>
                             <div className="Icon-hidden"><el.ico /></div>
                             <span className="span1"></span>
                             <span className="span2"></span>
@@ -34,14 +102,14 @@ const SkillsAndKnownTech:NextPage = () => {
                 })}
             </div>
         </div>
-        <div className="Container">
-            <h4 className="Header">Known technologies<span className="colored">.</span></h4>
-            <p className="Info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor volutpat erat, at mollis erat fringilla sed. Fusce non lectus augue. Ut pellentesque aliquet pharetra. Aliquam ac orci ut nibh bibendum suscipit.
+        <div className="Container" ref={ref4}>
+            <h4 className="Header" style={{ left: isIntersectingKnownHead ? '0%' : '-100%'}}>Known technologies<span className="colored">.</span></h4>
+            <p className="Info" style={{ left: isIntersectingKnownHead ? '0%' : '-100%'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor volutpat erat, at mollis erat fringilla sed. Fusce non lectus augue. Ut pellentesque aliquet pharetra. Aliquam ac orci ut nibh bibendum suscipit.
             Nulla pretium euismod varius. Etiam dignissim ante at magna commodo scelerisque. In at nunc dolor.</p>
-            <div className="IconsContainer">
+            <div className="IconsContainer" ref={ref3}>
                 {knownTechnologies.map((el, index):ReactNode => {
                     return <div key={index} className="SkillContainer">
-                        <button className="Icon">
+                        <button className={`Icon ${isIntersectingKnown ? 'iconTransform' : ''} ${iconKnownSize ? 'IconSize' : ''}`}>
                             <div className="Icon-hidden" ><el.ico /></div>
                             <span className="span1"></span>
                             <span className="span2"></span>
@@ -69,6 +137,7 @@ color: white;
 padding: 7.5rem 0rem 7.5rem 0rem;
 display: flex;
 flex-direction: column;
+overflow: hidden;
 
 .IconsContainer {
     display: flex;
@@ -88,14 +157,15 @@ flex-direction: column;
 }
 
 .Icon {
-    width: 7.5rem;
-    height: 7.5rem;
+    width: 0rem;
+    height: 0rem;
     font-size: 4rem;
     color: white;
     position: relative;
     border: none;
     background: none;
     transition: all .5s ease-in-out;
+    transform: scale(0);
 
     &-hidden {
         overflow: hidden;
@@ -171,11 +241,22 @@ flex-direction: column;
 
 }
 
+.iconTransform {
+    transform: scale(1);
+}
+
+.IconSize {
+    width: 7.5rem;
+    height: 7.5rem;
+}
+
 .Header {
   font-family: 'Arimo';
   font-size: 2.5rem;
   margin-top: 1rem;
   margin-left: 2rem;
+  position: relative;
+  transition: all 2s ease-out;
 }
 
 .Info {
@@ -184,7 +265,9 @@ flex-direction: column;
     line-height: 2.5rem;
     text-indent: 5rem;
     text-align: justify;
+    position: relative;
     padding: 0rem 2rem 0rem 2rem;
+    transition: all 2s ease-out;
 }
 
 .Container {

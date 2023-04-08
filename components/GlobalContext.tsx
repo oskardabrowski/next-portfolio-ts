@@ -7,7 +7,8 @@ interface GlobalProps {
     setIsPageLoading: Dispatch<SetStateAction<boolean>>,
     pageLoaded: boolean,
     setPageLoaded: Dispatch<SetStateAction<boolean>>,
-    LinkHandler: (e: React.MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>, page: string) => void;
+    LinkHandler: (e: React.MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>, page: string) => void,
+    isInViewport: (element: Element) => boolean
 }
 
 interface ProviderProps {
@@ -20,6 +21,17 @@ const GlobalContextProvider:NextPage<ProviderProps> = ({children}) => {
     const [pageLoaded, setPageLoaded] = useState(true);
 
     const router = useRouter();
+
+    function isInViewport(element:Element) {
+      const rect = element.getBoundingClientRect();
+      const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+      const windowWidth = (window.innerWidth || document.documentElement.clientWidth);
+
+      const vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0);
+      const horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0);
+
+      return (vertInView && horInView);
+    }
 
     const LinkHandler = (e: React.MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>, page:string):void => {
         e.preventDefault();
@@ -38,7 +50,8 @@ const GlobalContextProvider:NextPage<ProviderProps> = ({children}) => {
         setIsPageLoading,
         pageLoaded,
         setPageLoaded,
-        LinkHandler
+        LinkHandler,
+        isInViewport
      }}>
         {children}
      </GlobalContext.Provider>

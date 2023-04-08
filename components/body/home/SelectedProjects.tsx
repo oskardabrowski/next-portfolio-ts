@@ -1,9 +1,32 @@
 import { NextPage } from "next";
-import { useEffect } from "react";
 import styled from 'styled-components';
 import Slider from "./Slider";
+import { GlobalContext } from "../../GlobalContext";
+import { useContext, useState, useRef, useEffect } from "react";
 
 const SelectedProjects:NextPage = () => {
+    const ref = useRef(null);
+
+    const {isInViewport} = useContext(GlobalContext);
+
+    const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ref.current) {
+        if(isInViewport(ref.current)) {
+          setTimeout(() => {
+            setIsIntersecting(true);
+          }, 250);
+        } else {
+          setIsIntersecting(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
     useEffect(() => {
         var options = {
@@ -20,10 +43,10 @@ const SelectedProjects:NextPage = () => {
     },[])
 
   return (
-    <ProjectsSlider>
+    <ProjectsSlider ref={ref}>
 
 
-        <h4 className="Header">Selected projects<span className="colored">.</span></h4>
+        <h4 className="Header" style={{ left: isIntersecting ? '0%' : '-50%'}}>Selected projects<span className="colored">.</span></h4>
 
         <div id="planes">
 
@@ -74,6 +97,8 @@ overflow: hidden;
   margin-top: 1rem;
   margin-left: 2rem;
   color: white;
+  position: relative;
+  transition: all 1.5s ease-in-out;
 }
 
 
