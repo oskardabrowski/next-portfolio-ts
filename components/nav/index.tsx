@@ -4,10 +4,12 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import {AiOutlineMenu} from 'react-icons/ai';
 import {IoClose, IoPersonSharp, IoMail} from 'react-icons/io5';
+import { IoMdClose } from 'react-icons/io';
 import {AiFillHome, AiFillCode} from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import React, {useContext} from 'react';
 import { GlobalContext } from '../GlobalContext';
+import { BsCodeSlash, BsFillPatchCheckFill } from 'react-icons/bs';
 
 
 const Nav:NextPage = () => {
@@ -61,6 +63,24 @@ const Nav:NextPage = () => {
             <div ref={Shadow1WhiteRef} className="Loader-shadow1" style={{ transition: isPageLoading ? 'all 1s ease-in-out' : 'all 1.25s ease-in-out' , clipPath: isPageLoading ? 'polygon(100% 100%, 100% 0, 0 0, 100% 100%, 0 0, 0 100%, 100% 100%, 0 0)' : 'polygon(100% 0, 100% 0, 100% 0, 100% 0, 0 100%, 0 100%, 0 100%, 0 100%)' }}></div>
             <div ref={Shadow2WhiteRef} className="Loader-shadow2" style={{ transition: isPageLoading ? 'all .5s ease-in-out' : 'all 1.5s ease-in-out' , clipPath: isPageLoading ? 'polygon(100% 100%, 100% 0, 0 0, 100% 100%, 0 0, 0 100%, 100% 100%, 0 0)' : 'polygon(100% 0, 100% 0, 100% 0, 100% 0, 0 100%, 0 100%, 0 100%, 0 100%)' }}></div>
         </div>
+        <div className="TechDescription">
+            <div className="TechDescription-container coloredBackground">
+                <div className="TechDescription-container-head">
+                    <span>Javascript</span>
+                    <button><IoMdClose /></button>
+                </div>
+                <div className="TechDescription-container-desc">
+                    <p>
+                        Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia?
+                    </p>
+                    <a href="#"><BsCodeSlash /><span>See example project created with that technology</span></a>
+                </div>
+                <div className="TechDescription-container-used">
+                    <BsFillPatchCheckFill />
+                    <span>I use this technology at work</span>
+                </div>
+            </div>
+        </div>
     </Navigator>
 }
 
@@ -78,6 +98,100 @@ z-index: 1000000000;
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+.TechDescription {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-container {
+        width: 40%;
+        height: 40%;
+        border-radius: 15px;
+
+        &-used {
+            width: 100%;
+            padding: 1rem 0rem;
+            margin: 0rem 1rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Arimo';
+            font-weight: bold;
+            color: white;
+
+            & > span {
+                margin-left: 1rem;
+            }
+        }
+
+        &-desc {
+            width: 100%;
+            & > p, a {
+                padding: .5rem 0rem;
+                margin: 0rem .75rem;
+            }
+
+            & > p {
+                font-size: 1.1rem;
+                font-family: 'Arimo';
+                color: white;
+                line-height: 1.5rem;
+                text-align: justify;
+                text-indent: 50px;
+            }
+
+            & > a {
+                font-family: 'Arimo';
+                color: #ffffff;
+                display: flex;
+                align-items: center;
+                & > span {
+                    margin-left: .5rem;
+                }
+
+                &:hover {
+                    color: black;
+                }
+            }
+        }
+
+        &-head {
+            font-size: 2rem;
+            font-family: 'Arimo';
+            font-weight: bold;
+            width: 100%;
+            padding: .5rem 0rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            & > span {
+                margin-left: 1rem;
+            }
+
+            & > button {
+                margin-right: 1rem;
+                font-size: 2.5rem;
+                background: none;
+                border: none;
+                display: flex;
+                align-items: center;
+                color: white;
+                &:hover {
+                    cursor: pointer;
+                    color: black;
+                }
+            }
+        }
     }
 }
 
