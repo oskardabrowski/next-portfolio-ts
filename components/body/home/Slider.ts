@@ -340,12 +340,3 @@ class Slider {
 
 export default Slider;
 
-// // custom options
-// var options = {
-//     easing: 0.075,
-//     duration: 500,
-//     dragSpeed: 1.75,
-// }
-
-// // let's go!
-// var slider = new Slider(options);

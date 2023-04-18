@@ -52,31 +52,31 @@ const SelectedProjects:NextPage = () => {
 
          <a href="#" className="plane-wrapper">
                 <div className="plane">
-                    <img src="images/testimg.jpg" alt="First slide" />
+                    <img src="images/selectedprojects/SolarMap.png" alt="First slide" />
                 </div>
          </a>
 
-         <div className="plane-wrapper">
+         <a href="#" className="plane-wrapper">
                 <div className="plane">
-                    <img src="images/testimg.jpg" alt="Second slide" />
+                    <img src="images/selectedprojects/MalyZegarek.png" alt="Second slide" />
                 </div>
-         </div>
+         </a>
 
-         <div className="plane-wrapper">
+         <a href="#" className="plane-wrapper">
                 <div className="plane">
-                    <img src="images/testimg.jpg" alt="Third slide" />
+                    <img src="images/selectedprojects/ShoppingApp.png" alt="Third slide" />
                 </div>
-         </div>
-         <div className="plane-wrapper">
+         </a>
+         <a href="#" className="plane-wrapper">
                 <div className="plane">
-                    <img src="images/testimg.jpg" alt="Third slide" />
+                    <img src="images/selectedprojects/AliensInvaders.png" alt="Third slide" />
                 </div>
-         </div>
-         <div className="plane-wrapper">
+         </a>
+         <a href="#" className="plane-wrapper">
                 <div className="plane">
-                    <img src="images/testimg.jpg" alt="Third slide" />
+                    <img src="images/selectedprojects/MovieFinder.png" alt="Third slide" />
                 </div>
-         </div>
+         </a>
       </div>
 
 
@@ -106,7 +106,7 @@ overflow: hidden;
 
     #planes {
         /* width of items * number of items */
-        width: calc(((100vw / 1.75)) * 5);
+        width: calc(((100vw / 1.5)) * 5);
         padding: 0 2.5vw;
         height: 100vh;
         display: flex;

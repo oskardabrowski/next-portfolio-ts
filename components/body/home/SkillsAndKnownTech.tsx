@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import styled from "styled-components";
-import { ReactNode ,useContext, useEffect, useState, useRef } from "react";
+import { ReactNode ,useContext, useEffect, useState, useRef, MouseEvent } from "react";
 import technologies from "../../data/technologies";
 import { knownTechnologies } from "../../data/technologies";
 import { GlobalContext } from "../../GlobalContext";
@@ -86,8 +86,13 @@ const SkillsAndKnownTech:NextPage = () => {
             Nulla pretium euismod varius. Etiam dignissim ante at magna commodo scelerisque. In at nunc dolor.</p>
             <div className="IconsContainer" ref={ref2}>
                 {technologies.map((el, index):ReactNode => {
+                    function technologyDescriptionWindow(e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>): void {
+                        e.preventDefault();
+                        alert('Done');
+                    }
+
                     return <div key={index} className="SkillContainer">
-                        <button className={`Icon ${isIntersectingSkills ? 'iconTransform' : ''} ${iconSize ? 'IconSize' : ''}`}>
+                        <button onClick={(e) => technologyDescriptionWindow(e)} className={`Icon ${isIntersectingSkills ? 'iconTransform' : ''} ${iconSize ? 'IconSize' : ''}`}>
                             <div className="Icon-hidden"><el.ico /></div>
                             <span className="span1"></span>
                             <span className="span2"></span>
