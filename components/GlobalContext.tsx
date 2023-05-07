@@ -1,6 +1,8 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { createContext, Dispatch, SetStateAction, useState, ReactNode } from "react";
+import {AiFillHtml5} from 'react-icons/ai';
+import { IconType } from "react-icons/lib";
 
 interface GlobalProps {
     isPageLoading: boolean,
@@ -8,7 +10,23 @@ interface GlobalProps {
     pageLoaded: boolean,
     setPageLoaded: Dispatch<SetStateAction<boolean>>,
     LinkHandler: (e: React.MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>, page: string) => void,
-    isInViewport: (element: Element) => boolean
+    isInViewport: (element: Element) => boolean,
+    isSkillWindowOpened: boolean,
+    setIsSkillWindowOpened: Dispatch<SetStateAction<boolean>>,
+    SkillData: {
+        tech: string;
+        desc: string;
+        link: string;
+        ico: IconType;
+        used: boolean;
+    },
+    SetSkillData: Dispatch<SetStateAction<{
+        tech: string;
+        desc: string;
+        link: string;
+        ico: IconType;
+        used: boolean;
+    }>>
 }
 
 interface ProviderProps {
@@ -19,6 +37,14 @@ export const GlobalContext = createContext({} as GlobalProps);
 const GlobalContextProvider:NextPage<ProviderProps> = ({children}) => {
     const [isPageLoading, setIsPageLoading] = useState(true);
     const [pageLoaded, setPageLoaded] = useState(true);
+    const [isSkillWindowOpened, setIsSkillWindowOpened] = useState(false);
+    const [SkillData, SetSkillData] = useState({
+        tech: 'HTML5',
+        desc: '',
+        link: '',
+        ico: AiFillHtml5,
+        used: false
+    })
 
     const router = useRouter();
 
@@ -51,7 +77,11 @@ const GlobalContextProvider:NextPage<ProviderProps> = ({children}) => {
         pageLoaded,
         setPageLoaded,
         LinkHandler,
-        isInViewport
+        isInViewport,
+        isSkillWindowOpened,
+        setIsSkillWindowOpened,
+        SkillData,
+        SetSkillData
      }}>
         {children}
      </GlobalContext.Provider>

@@ -9,12 +9,12 @@ import {AiFillHome, AiFillCode} from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import React, {useContext} from 'react';
 import { GlobalContext } from '../GlobalContext';
-import { BsCodeSlash, BsFillPatchCheckFill } from 'react-icons/bs';
-
+import { BsFillPatchCheckFill, BsFillFileEarmarkCodeFill } from 'react-icons/bs';
+import { BiMedal } from 'react-icons/bi';
 
 const Nav:NextPage = () => {
     const [menuOpened, setMenuOpened] = useState(false);
-    const {isPageLoading, LinkHandler} = useContext(GlobalContext);
+    const {isPageLoading, LinkHandler, isSkillWindowOpened, setIsSkillWindowOpened, SkillData} = useContext(GlobalContext);
     const router = useRouter();
 
     const LoaderRef = useRef<HTMLDivElement>(null);
@@ -31,6 +31,11 @@ const Nav:NextPage = () => {
             }, 1550)
         }
     }, [isPageLoading]);
+
+    const closeSkillWindow = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault();
+        setIsSkillWindowOpened(!isSkillWindowOpened);
+    }
 
     return <Navigator>
         <button id="OpenCloseMenu" className="MenuButton" onClick={() => setMenuOpened(!menuOpened)}>
@@ -63,22 +68,24 @@ const Nav:NextPage = () => {
             <div ref={Shadow1WhiteRef} className="Loader-shadow1" style={{ transition: isPageLoading ? 'all 1s ease-in-out' : 'all 1.25s ease-in-out' , clipPath: isPageLoading ? 'polygon(100% 100%, 100% 0, 0 0, 100% 100%, 0 0, 0 100%, 100% 100%, 0 0)' : 'polygon(100% 0, 100% 0, 100% 0, 100% 0, 0 100%, 0 100%, 0 100%, 0 100%)' }}></div>
             <div ref={Shadow2WhiteRef} className="Loader-shadow2" style={{ transition: isPageLoading ? 'all .5s ease-in-out' : 'all 1.5s ease-in-out' , clipPath: isPageLoading ? 'polygon(100% 100%, 100% 0, 0 0, 100% 100%, 0 0, 0 100%, 100% 100%, 0 0)' : 'polygon(100% 0, 100% 0, 100% 0, 100% 0, 0 100%, 0 100%, 0 100%, 0 100%)' }}></div>
         </div>
-        <div className="TechDescription">
-            <div className="TechDescription-container coloredBackground">
-                <div className="TechDescription-container-head">
-                    <span>Javascript</span>
-                    <button><IoMdClose /></button>
+        <div style={{ display: isSkillWindowOpened ? 'flex' : 'none' }} className="TechDescription">
+            <div className="TechDescription-container">
+                <div className="TechDescription-container-head coloredBackground">
+                    <span>{SkillData.tech}</span>
+                    <button onClick={(e) => closeSkillWindow(e)}><IoMdClose /></button>
                 </div>
                 <div className="TechDescription-container-desc">
+                    <div className="TechDescription-container-desc-icon">
+                        <SkillData.ico />
+                    </div>
                     <p>
-                        Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia?
+                        {SkillData.desc}
                     </p>
-                    <a href="#"><BsCodeSlash /><span>See example project created with that technology</span></a>
+                    <a href={SkillData.link}><BsFillFileEarmarkCodeFill /><span>See example project created with that technology</span></a>
                 </div>
-                <div className="TechDescription-container-used">
-                    <BsFillPatchCheckFill />
-                    <span>I use this technology at work</span>
-                </div>
+                {
+                    SkillData.used ? <div className="TechDescription-container-used"><BiMedal /><span>I use this technology in commercial projects</span></div> : ''
+                }
             </div>
         </div>
     </Navigator>
@@ -114,27 +121,43 @@ z-index: 1000000000;
 
     &-container {
         width: 40%;
-        height: 40%;
+        height: auto;
         border-radius: 15px;
+        overflow: hidden;
+        background: white;
 
         &-used {
             width: 100%;
             padding: 1rem 0rem;
-            margin: 0rem 1rem;
-            font-size: 2rem;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
+            justify-content: center;
             font-family: 'Arimo';
             font-weight: bold;
-            color: white;
+            color: #00CA22;
 
             & > span {
-                margin-left: 1rem;
+                margin-left: .8rem;
+                color: transparent;
+                background: linear-gradient(to top right, #00FF2A, #00A31B);
+                background-clip: text;
+                -webkit-background-clip: text;
             }
         }
 
         &-desc {
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            &-icon {
+                margin: 3rem 0rem 2rem 0rem;
+                font-size: 4rem;
+            }
+
             & > p, a {
                 padding: .5rem 0rem;
                 margin: 0rem .75rem;
@@ -143,7 +166,7 @@ z-index: 1000000000;
             & > p {
                 font-size: 1.1rem;
                 font-family: 'Arimo';
-                color: white;
+                color: black;
                 line-height: 1.5rem;
                 text-align: justify;
                 text-indent: 50px;
@@ -151,7 +174,7 @@ z-index: 1000000000;
 
             & > a {
                 font-family: 'Arimo';
-                color: #ffffff;
+                color: black;
                 display: flex;
                 align-items: center;
                 & > span {

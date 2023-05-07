@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import { Engine } from "tsparticles-engine";
+import { RangeValue } from "tsparticles-engine";
 
 const HomeHeader:NextPage = () => {
 
@@ -67,16 +68,18 @@ const HomeHeader:NextPage = () => {
                         outModes: {
                             default: "bounce",
                         },
-                        random: false,
-                        speed: 1,
+                        random: true,
+                        speed: 2,
                         bounce: false,
-                        // decay: 2,
-
                         straight: false,
+                    },
+                    decay: {
+                      enable: true,
+                      value: 0.05,
                     },
                     gravity: {
                       enable: true,
-                      maxSpeed: 3
+                      maxSpeed: 2
                     },
                     number: {
                         density: {

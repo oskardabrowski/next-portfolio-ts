@@ -4,6 +4,7 @@ import { ReactNode ,useContext, useEffect, useState, useRef, MouseEvent } from "
 import technologies from "../../data/technologies";
 import { knownTechnologies } from "../../data/technologies";
 import { GlobalContext } from "../../GlobalContext";
+import { IconType } from "react-icons/lib";
 
 const SkillsAndKnownTech:NextPage = () => {
     const ref = useRef(null);
@@ -11,7 +12,7 @@ const SkillsAndKnownTech:NextPage = () => {
     const ref3 = useRef(null);
     const ref4 = useRef(null);
 
-  const {LinkHandler, isInViewport} = useContext(GlobalContext);
+  const {isInViewport, setIsSkillWindowOpened, SetSkillData} = useContext(GlobalContext);
 
    const [isIntersecting, setIsIntersecting] = useState(false);
    const [isIntersectingKnownHead, setIsIntersectingKnownHead] = useState(false);
@@ -75,6 +76,21 @@ const SkillsAndKnownTech:NextPage = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  interface descData {
+    tech: string,
+    desc: string,
+    link: string,
+    ico: IconType,
+    used: boolean
+  }
+
+  function technologyDescriptionWindow(e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>, data: descData): void {
+      e.preventDefault();
+      SetSkillData(data);
+      setIsSkillWindowOpened(true);
+  }
+
   return (
     <SkillsAndTech ref={ref}>
         <div className="Head"><h3 className="Header" style={{ left: isIntersecting ? '0%' : '-100%'}}>Skills and known technologies<span className="colored">.</span></h3></div>
@@ -86,13 +102,15 @@ const SkillsAndKnownTech:NextPage = () => {
             Nulla pretium euismod varius. Etiam dignissim ante at magna commodo scelerisque. In at nunc dolor.</p>
             <div className="IconsContainer" ref={ref2}>
                 {technologies.map((el, index):ReactNode => {
-                    function technologyDescriptionWindow(e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>): void {
-                        e.preventDefault();
-                        alert('Done');
-                    }
-
+                    const descData:descData = {
+                        tech: el.technology,
+                        desc: el.description,
+                        link: el.link,
+                        ico: el.ico,
+                        used: false
+                    };
                     return <div key={index} className="SkillContainer">
-                        <button onClick={(e) => technologyDescriptionWindow(e)} className={`Icon ${isIntersectingSkills ? 'iconTransform' : ''} ${iconSize ? 'IconSize' : ''}`}>
+                        <button onClick={(e) => technologyDescriptionWindow(e, descData)} className={`Icon ${isIntersectingSkills ? 'iconTransform' : ''} ${iconSize ? 'IconSize' : ''}`}>
                             <div className="Icon-hidden"><el.ico /></div>
                             <span className="span1"></span>
                             <span className="span2"></span>
@@ -113,8 +131,15 @@ const SkillsAndKnownTech:NextPage = () => {
             Nulla pretium euismod varius. Etiam dignissim ante at magna commodo scelerisque. In at nunc dolor.</p>
             <div className="IconsContainer" ref={ref3}>
                 {knownTechnologies.map((el, index):ReactNode => {
+                    const descData:descData = {
+                        tech: el.technology,
+                        desc: el.description,
+                        link: el.link,
+                        ico: el.ico,
+                        used: false
+                    };
                     return <div key={index} className="SkillContainer">
-                        <button className={`Icon ${isIntersectingKnown ? 'iconTransform' : ''} ${iconKnownSize ? 'IconSize' : ''}`}>
+                        <button onClick={(e) => technologyDescriptionWindow(e, descData)} className={`Icon ${isIntersectingKnown ? 'iconTransform' : ''} ${iconKnownSize ? 'IconSize' : ''}`}>
                             <div className="Icon-hidden" ><el.ico /></div>
                             <span className="span1"></span>
                             <span className="span2"></span>
