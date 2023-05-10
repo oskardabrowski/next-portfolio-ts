@@ -3,7 +3,7 @@ import {IoLogoCss3} from 'react-icons/io';
 import {IoLogoReact, IoLogoJavascript} from 'react-icons/io5';
 import {SiSass, SiStyledcomponents, SiTypescript, SiNextdotjs, SiQgis, SiAffinity,
     SiGit, SiBootstrap, SiWebpack, SiLeaflet, SiRedux, SiGatsby, SiElectron, SiLaravel, SiPython,
-        SiTestinglibrary, SiCypress, SiExpress, SiNestjs, SiDjango} from 'react-icons/si';
+        SiTestinglibrary, SiCypress, SiExpress, SiNestjs, SiDjango, SiJquery} from 'react-icons/si';
 import {DiPhp, DiNodejsSmall} from 'react-icons/di';
 import {TbBrandReactNative} from 'react-icons/tb';
 
@@ -77,6 +77,12 @@ const technologies = [
 ];
 
 export const knownTechnologies = [
+    {
+        technology: "Affinity Suite",
+        description: "JavaScript is a programming language that is widely used for developing web applications.",
+        link: "https://www.javascript.com/",
+        ico: SiJquery
+    },
     {
         technology: "Affinity Suite",
         description: "JavaScript is a programming language that is widely used for developing web applications.",
