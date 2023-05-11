@@ -37,7 +37,7 @@ const AboutTree:NextPage = () => {
         <div className="Tree-break"><AiOutlineMinus className="line" /></div>
         <div title="Learning TypeScript, I love it!" className="Tree-icon"><SiTypescript /></div>
         <div className="Tree-break"><AiOutlineMinus className="line" /></div>
-        <div title="Learning how to create Native Apps and Desktop Apps" className="Tree-icon"><TbBrandReactNative /><AiOutlineMinus /><SiElectron /><AiOutlineMinus /><IoLogoJavascript /></div>
+        <div title="Learning how to create Native Apps and Desktop Apps and still learning JavaScript" className="Tree-icon"><TbBrandReactNative /><AiOutlineMinus /><SiElectron /><AiOutlineMinus /><IoLogoJavascript /></div>
       </div>
     </TreeStyles>
   )

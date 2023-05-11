@@ -1,12 +1,36 @@
 import React from 'react';
 import { NextPage } from 'next';
 import styled from 'styled-components';
+import { GlobalContext } from "../../GlobalContext";
+import { useContext, useRef, useState, useEffect } from "react";
 
 const AboutDescription:NextPage = () => {
+  const ref = useRef(null);
+
+  const {isInViewport} = useContext(GlobalContext);
+
+   const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ref.current) {
+        if(isInViewport(ref.current)) {
+          setTimeout(() => {
+            setIsIntersecting(true);
+          }, 250);
+        } else {
+          setIsIntersecting(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
-    <AboutContainer>
-      <h2 className="Head">Who am I<span className="colored">?</span></h2>
-      <p className="Desc">One of these days i'm going to get that red dot, just you wait and see catty ipsum.
+    <AboutContainer ref={ref}>
+      <h2 className="Head" style={{ left: isIntersecting ? '0%' : '-100%'}}>Who am I<span className="colored">?</span></h2>
+      <p className="Desc" style={{ left: isIntersecting ? '0%' : '110%'}}>One of these days i'm going to get that red dot, just you wait and see catty ipsum.
         Run outside as soon as door open i love cats i am one wake up scratch humans leg for
         food then purr then i have a and relax, flee in terror at cucumber discovered on floor
         yet sniff all the things yet find a way to fit in tiny box. My water bowl is clean
@@ -20,11 +44,11 @@ const AboutDescription:NextPage = () => {
         eyes so i can purr and swat the glittery gleaming yarn to him (the yarn is from a $125
         sweater).
       </p>
-      <div className="Image">
+      <div className="Image" style={{ left: isIntersecting ? '0%' : '-100%'}}>
         <div className="Image-center"></div>
       </div>
-      <h3 className="Head">Why programming<span className="colored">?</span></h3>
-      <p className="Desc">One of these days i'm going to get that red dot, just you wait and see catty ipsum.
+      <h3 className="Head" style={{ left: isIntersecting ? '0%' : '110%'}}>Why programming<span className="colored">?</span></h3>
+      <p className="Desc" style={{ left: isIntersecting ? '0%' : '-100%'}}>One of these days i'm going to get that red dot, just you wait and see catty ipsum.
         Run outside as soon as door open i love cats i am one wake up scratch humans leg for
         food then purr then i have a and relax, flee in terror at cucumber discovered on floor
         yet sniff all the things yet find a way to fit in tiny box. My water bowl is clean
@@ -42,10 +66,13 @@ font-family: 'Arimo';
 color: white;
 z-index: 100;
 margin-top: 5rem;
+overflow: hidden;
 
 .Head {
   font-size: 3rem;
   margin-left: 2rem;
+  position: relative;
+  transition: all 2.5s ease-in-out;
 }
 
 .Desc {
@@ -54,6 +81,8 @@ margin-top: 5rem;
   text-indent: 50px;
   text-align: justify;
   line-height: 2.25rem;
+  position: relative;
+  transition: all 2.5s ease-in-out;
 }
 
 .Image {
@@ -62,6 +91,8 @@ margin-top: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  transition: all 2.5s ease-in-out;
 
   &-center {
     width: 20rem;
