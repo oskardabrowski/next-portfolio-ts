@@ -5,6 +5,7 @@ import AboutHeader from '../../components/body/about/AboutHeader';
 import AboutDescription from '../../components/body/about/AboutDescription';
 import AboutTree from '../../components/body/about/AboutTree';
 import AboutOther from '../../components/body/about/AboutOther';
+import AboutExperience from '../../components/body/about/AboutExperience';
 interface LayoutProps {
   children: ReactNode
 }
@@ -16,6 +17,7 @@ const About:NextPage<LayoutProps> = ({children}) => {
           <AboutHeader />
           <AboutDescription />
           <AboutTree />
+          <AboutExperience />
           <AboutOther />
           <Footer />
         </>
