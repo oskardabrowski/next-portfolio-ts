@@ -1,12 +1,12 @@
 import { NextPage } from 'next';
 import React from 'react';
 import styled from 'styled-components';
-
+import Image from 'next/image';
 
 const AboutHeader:NextPage = () => {
   return (
     <Header>
-      <img src="images/Moasic.png" alt="" />
+      <Image fill={true} src="/images/Moasic.png" alt="" />
       <h1>I'm Oskar Dąbrowski</h1>
       <h2><span className="colored">Software</span> Developer</h2>
     </Header>
