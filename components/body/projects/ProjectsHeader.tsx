@@ -17,7 +17,7 @@ const ProjectsHeader:NextPage = () => {
     }, []);
   return (
     <ProjectsHead>
-        <h1>Discover my projects<span className="colored">!</span></h1>
+        <h1 className="ProjectsHead">Discover my projects<span className="colored">!</span></h1>
         <section id="ParticlesBackground">
            <Particles
             id="tsparticles"
@@ -118,14 +118,13 @@ const ProjectsHeader:NextPage = () => {
             }}
         />
       </section>
-{/* <script async="" defer="" src="https://buttons.github.io/buttons.js"></script> */}
     </ProjectsHead>
   )
 }
 
 const ProjectsHead = styled.header`
 width: 100%;
-height: 100vh;
+height: 50vh;
 color: white;
 font-family: 'Arimo';
 
@@ -133,12 +132,23 @@ font-family: 'Arimo';
     opacity: .5;
 }
 
+.ParticlesBackground {
+  width: 100%;
+  height: 100vh;
+}
+
+.ProjectsHead {
+  font-size: 3rem;
+  position: absolute;
+  top: 10rem;
+  left: 10rem;
+  z-index: 10000;
+}
 
 canvas {
   display: block;
   vertical-align: bottom;
 }
-/* ---- tsparticles container ---- */
 #tsparticles {
   position: absolute;
   width: 100%;
