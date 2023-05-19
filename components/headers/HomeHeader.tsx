@@ -66,12 +66,13 @@ const HomeHeader:NextPage = () => {
                     move: {
                         enable: true,
                         outModes: {
-                            default: "bounce",
+                            default: "out",
                         },
                         random: true,
                         speed: 2,
                         bounce: false,
                         straight: false,
+                        direction: "none",
                     },
                     decay: {
                       enable: true,

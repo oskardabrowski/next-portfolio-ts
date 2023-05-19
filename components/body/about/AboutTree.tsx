@@ -6,7 +6,7 @@ import {IoLogoCss3} from 'react-icons/io';
 import {IoLogoReact, IoLogoJavascript} from 'react-icons/io5';
 import {SiSass, SiStyledcomponents, SiTypescript, SiNextdotjs, SiQgis, SiAffinity,
     SiGit, SiBootstrap, SiWebpack, SiLeaflet, SiRedux, SiGatsby, SiElectron, SiLaravel, SiPython,
-        SiTestinglibrary, SiCypress, SiExpress, SiNestjs, SiDjango, SiJquery} from 'react-icons/si';
+        SiTestinglibrary, SiCypress, SiExpress, SiNestjs, SiDjango, SiJquery, SiJest} from 'react-icons/si';
 import {DiPhp, DiNodejsSmall} from 'react-icons/di';
 import {TbBrandReactNative} from 'react-icons/tb';
 import {ImSvg} from 'react-icons/im';
@@ -296,14 +296,14 @@ const AboutTree:NextPage = () => {
         <div ref={ref12} style={{ opacity: isIntersecting12 ? '1' : '0'}} className="Tree-break"><AiOutlineMinus className="line" /></div>
         <div ref={ref13} style={{ opacity: isIntersecting13 ? '1' : '0'}} title="Learning GIT" className="Tree-icon"><SiGit /></div>
         <div ref={ref14} style={{ opacity: isIntersecting14 ? '1' : '0'}} className="Tree-break"><AiOutlineMinus className="line" /></div>
-        <div ref={ref15} style={{ opacity: isIntersecting15 ? '1' : '0'}} title="Testing apps!" className="Tree-icon"><SiTestinglibrary /><AiOutlineMinus /><SiCypress /></div>
+        <div ref={ref15} style={{ opacity: isIntersecting15 ? '1' : '0'}} title="Testing apps!" className="Tree-icon"><SiTestinglibrary /><AiOutlineMinus /><SiCypress /><AiOutlineMinus /><SiJest /></div>
         <div ref={ref16} style={{ opacity: isIntersecting16 ? '1' : '0'}} className="Tree-break"><AiOutlineMinus className="line" /></div>
         <div ref={ref17} style={{ opacity: isIntersecting17 ? '1' : '0'}} title="Learning metaframeworks, Next is better for me :)" className="Tree-icon"><SiGatsby /><AiOutlineMinus /><SiNextdotjs /></div>
         <div ref={ref18} style={{ opacity: isIntersecting18 ? '1' : '0'}} className="Tree-break"><AiOutlineMinus className="line" /></div>
-        <div ref={ref19} style={{ opacity: isIntersecting19 ? '1' : '0'}} title="Learning JS backend frameworks" className="Tree-icon"><SiExpress /><AiOutlineMinus /><SiNestjs /></div>
-        <div ref={ref20} style={{ opacity: isIntersecting20 ? '1' : '0'}} className="Tree-break"><AiOutlineMinus className="line" /></div>
         <div ref={ref21} style={{ opacity: isIntersecting21 ? '1' : '0'}} title="Learning TypeScript, I love it!" className="Tree-icon"><SiTypescript /></div>
         <div ref={ref22} style={{ opacity: isIntersecting22 ? '1' : '0'}} className="Tree-break"><AiOutlineMinus className="line" /></div>
+        <div ref={ref19} style={{ opacity: isIntersecting19 ? '1' : '0'}} title="Learning JS backend frameworks" className="Tree-icon"><SiExpress /><AiOutlineMinus /><SiNestjs /></div>
+        <div ref={ref20} style={{ opacity: isIntersecting20 ? '1' : '0'}} className="Tree-break"><AiOutlineMinus className="line" /></div>
         <div ref={ref23} style={{ opacity: isIntersecting23 ? '1' : '0'}} title="Learning how to create Native Apps and Desktop Apps and still learning JavaScript" className="Tree-icon"><TbBrandReactNative /><AiOutlineMinus /><SiElectron /><AiOutlineMinus /><IoLogoJavascript /></div>
       </div>
     </TreeStyles>

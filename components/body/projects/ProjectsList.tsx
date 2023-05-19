@@ -2,6 +2,10 @@ import { NextPage } from 'next';
 import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
+import {IoLogoReact, IoLogoJavascript} from 'react-icons/io5';
+import {AiFillGithub} from 'react-icons/ai';
+import {RiLink} from 'react-icons/ri';
+
 
 const ProjectsList:NextPage = () => {
   return (
@@ -9,7 +13,9 @@ const ProjectsList:NextPage = () => {
       <a href="#" className="Item">
         <div className="Item-image">
           <div className="Item-image-container">
-            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1794&q=80" alt="" />
+            <div>
+              <Image src="/images/projects/testingimg.png" fill={true} alt="" />
+            </div>
           </div>
           <span className="Item-image-top"></span>
           <span className="Item-image-bottom"></span>
@@ -17,18 +23,218 @@ const ProjectsList:NextPage = () => {
         <div className="Item-content">
           <span className="Item-content-name">Project Name</span>
           <div className="Item-content-tech">
-            Technologies
+            <IoLogoReact />
+            <IoLogoJavascript />
+            <IoLogoJavascript />
           </div>
           <div className="Item-content-git">
-            github
+            <div className="Item-content-git-container">
+              <a href="#"><AiFillGithub /></a>
+              <a href="#"><RiLink /></a>
+            </div>
           </div>
         </div>
       </a>
-      <div className="Item"></div>
-      <div className="Item"></div>
-      <div className="Item"></div>
-      <div className="Item"></div>
-      <div className="Item"></div>
+      <a href="#" className="Item">
+        <div className="Item-image">
+          <div className="Item-image-container">
+            <div>
+              <Image src="/images/projects/testingimg.png" fill={true} alt="" />
+            </div>
+          </div>
+          <span className="Item-image-top"></span>
+          <span className="Item-image-bottom"></span>
+        </div>
+        <div className="Item-content">
+          <span className="Item-content-name">Project Name</span>
+          <div className="Item-content-tech">
+            <IoLogoReact />
+            <IoLogoJavascript />
+            <IoLogoJavascript />
+          </div>
+          <div className="Item-content-git">
+            <div className="Item-content-git-container">
+              <a href="#"><AiFillGithub /></a>
+              <a href="#"><RiLink /></a>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="#" className="Item">
+        <div className="Item-image">
+          <div className="Item-image-container">
+            <div>
+              <Image src="/images/projects/testingimg.png" fill={true} alt="" />
+            </div>
+          </div>
+          <span className="Item-image-top"></span>
+          <span className="Item-image-bottom"></span>
+        </div>
+        <div className="Item-content">
+          <span className="Item-content-name">Project Name</span>
+          <div className="Item-content-tech">
+            <IoLogoReact />
+            <IoLogoJavascript />
+            <IoLogoJavascript />
+          </div>
+          <div className="Item-content-git">
+            <div className="Item-content-git-container">
+              <a href="#"><AiFillGithub /></a>
+              <a href="#"><RiLink /></a>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="#" className="Item">
+        <div className="Item-image">
+          <div className="Item-image-container">
+            <div>
+              <Image src="/images/projects/testingimg.png" fill={true} alt="" />
+            </div>
+          </div>
+          <span className="Item-image-top"></span>
+          <span className="Item-image-bottom"></span>
+        </div>
+        <div className="Item-content">
+          <span className="Item-content-name">Project Name</span>
+          <div className="Item-content-tech">
+            <IoLogoReact />
+            <IoLogoJavascript />
+            <IoLogoJavascript />
+          </div>
+          <div className="Item-content-git">
+            <div className="Item-content-git-container">
+              <a href="#"><AiFillGithub /></a>
+              <a href="#"><RiLink /></a>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="#" className="Item">
+        <div className="Item-image">
+          <div className="Item-image-container">
+            <div>
+              <Image src="/images/projects/testingimg.png" fill={true} alt="" />
+            </div>
+          </div>
+          <span className="Item-image-top"></span>
+          <span className="Item-image-bottom"></span>
+        </div>
+        <div className="Item-content">
+          <span className="Item-content-name">Project Name</span>
+          <div className="Item-content-tech">
+            <IoLogoReact />
+            <IoLogoJavascript />
+            <IoLogoJavascript />
+          </div>
+          <div className="Item-content-git">
+            <div className="Item-content-git-container">
+              <a href="#"><AiFillGithub /></a>
+              <a href="#"><RiLink /></a>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="#" className="Item">
+        <div className="Item-image">
+          <div className="Item-image-container">
+            <div>
+              <Image src="/images/projects/testingimg.png" fill={true} alt="" />
+            </div>
+          </div>
+          <span className="Item-image-top"></span>
+          <span className="Item-image-bottom"></span>
+        </div>
+        <div className="Item-content">
+          <span className="Item-content-name">Project Name</span>
+          <div className="Item-content-tech">
+            <IoLogoReact />
+            <IoLogoJavascript />
+            <IoLogoJavascript />
+          </div>
+          <div className="Item-content-git">
+            <div className="Item-content-git-container">
+              <a href="#"><AiFillGithub /></a>
+              <a href="#"><RiLink /></a>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="#" className="Item">
+        <div className="Item-image">
+          <div className="Item-image-container">
+            <div>
+              <Image src="/images/projects/testingimg.png" fill={true} alt="" />
+            </div>
+          </div>
+          <span className="Item-image-top"></span>
+          <span className="Item-image-bottom"></span>
+        </div>
+        <div className="Item-content">
+          <span className="Item-content-name">Project Name</span>
+          <div className="Item-content-tech">
+            <IoLogoReact />
+            <IoLogoJavascript />
+            <IoLogoJavascript />
+          </div>
+          <div className="Item-content-git">
+            <div className="Item-content-git-container">
+              <a href="#"><AiFillGithub /></a>
+              <a href="#"><RiLink /></a>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="#" className="Item">
+        <div className="Item-image">
+          <div className="Item-image-container">
+            <div>
+              <Image src="/images/projects/testingimg.png" fill={true} alt="" />
+            </div>
+          </div>
+          <span className="Item-image-top"></span>
+          <span className="Item-image-bottom"></span>
+        </div>
+        <div className="Item-content">
+          <span className="Item-content-name">Project Name</span>
+          <div className="Item-content-tech">
+            <IoLogoReact />
+            <IoLogoJavascript />
+            <IoLogoJavascript />
+          </div>
+          <div className="Item-content-git">
+            <div className="Item-content-git-container">
+              <a href="#"><AiFillGithub /></a>
+              <a href="#"><RiLink /></a>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="#" className="Item">
+        <div className="Item-image">
+          <div className="Item-image-container">
+            <div>
+              <Image src="/images/projects/testingimg.png" fill={true} alt="" />
+            </div>
+          </div>
+          <span className="Item-image-top"></span>
+          <span className="Item-image-bottom"></span>
+        </div>
+        <div className="Item-content">
+          <span className="Item-content-name">Project Name</span>
+          <div className="Item-content-tech">
+            <IoLogoReact />
+            <IoLogoJavascript />
+            <IoLogoJavascript />
+          </div>
+          <div className="Item-content-git">
+            <div className="Item-content-git-container">
+              <a href="#"><AiFillGithub /></a>
+              <a href="#"><RiLink /></a>
+            </div>
+          </div>
+        </div>
+      </a>
     </List>
   )
 }
@@ -52,6 +258,11 @@ align-content: start;
   border-radius: 15px;
   overflow: hidden;
   display: flex;
+  transition: all .5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   &-image {
     height: 100%;
@@ -61,8 +272,13 @@ align-content: start;
       width: 10rem;
       overflow: hidden;
       clip-path: polygon(0 0, 65% 0, 100% 100%, 0% 100%);
-      & > img {
+      position: relative;
+      & > div {
+        position: relative;
         height: 100%;
+        width: 20rem;
+        top: 0;
+        left: 0;
       }
     }
 
@@ -98,15 +314,19 @@ align-content: start;
     margin: 1rem 0rem;
     position: relative;
     &-name {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: bold;
     }
     &-tech {
-      margin: 1rem 0rem;
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 100%;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-evenly;
+      font-size: 2.5rem;
     }
     &-git {
       margin: 1rem 0rem;
@@ -117,6 +337,20 @@ align-content: start;
       position: absolute;
       left: 0;
       bottom: 1rem;
+      font-size: 3rem;
+      &-container {
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        & > a {
+          color: black;
+          transition: all .5s ease-in-out;
+          &:hover {
+            color: #00AEFF;
+          }
+        }
+      }
     }
   }
 }
