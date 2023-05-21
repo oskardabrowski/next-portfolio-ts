@@ -10,8 +10,8 @@ import {SiSass, SiStyledcomponents, SiTypescript, SiNextdotjs, SiQgis, SiAffinit
 import {DiPhp, DiNodejsSmall} from 'react-icons/di';
 import {TbBrandReactNative} from 'react-icons/tb';
 import {ImSvg} from 'react-icons/im';
-import { GlobalContext } from "../../GlobalContext";
-import { useContext, useRef, useState, useEffect } from "react";
+import { GlobalContext } from '../../GlobalContext';
+import { useContext, useRef, useState, useEffect } from 'react';
 
 const AboutTree:NextPage = () => {
   const ref1 = useRef(null);
