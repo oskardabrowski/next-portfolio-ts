@@ -46,19 +46,19 @@ const Nav:NextPage = () => {
         <div id="MenuOptions" style={menuOpened ? { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' } : { clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} className="MenuOptions">
             <Link onClick={(e) => LinkHandler(e, '/')} className="MenuOptions__link" href="/">
                 <div style={{ borderColor: router.pathname === '/' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><AiFillHome /></div>
-                <span className="MenuOptions__link-name">Strona główna</span>
+                <span className="MenuOptions__link-name">Home</span>
             </Link>
             <Link onClick={(e) => LinkHandler(e, '/about')} className="MenuOptions__link" href="/about">
                 <div style={{ borderColor: router.pathname === '/about' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><IoPersonSharp /></div>
-                <span className="MenuOptions__link-name">O mnie</span>
+                <span className="MenuOptions__link-name">About</span>
             </Link>
             <Link onClick={(e) => LinkHandler(e, '/projects')} className="MenuOptions__link" href="/projects">
                 <div style={{ borderColor: router.pathname === '/projects' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><AiFillCode /></div>
-                <span className="MenuOptions__link-name">Projekty</span>
+                <span className="MenuOptions__link-name">Projects</span>
             </Link>
             <Link onClick={(e) => LinkHandler(e, '/contact')} className="MenuOptions__link" href="/contact">
                 <div style={{ borderColor: router.pathname === '/contact' ? '#00C11E' : 'rgba(0,0,0,0)' }} className="MenuOptions__link-icon"><IoMail /></div>
-                <span className="MenuOptions__link-name">Kontakt</span>
+                <span className="MenuOptions__link-name">Contact</span>
             </Link>
         </div>
         <div id="Loader" ref={LoaderRef}>

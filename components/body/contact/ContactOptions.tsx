@@ -90,15 +90,16 @@ display: flex;
             margin: .5rem 0rem 1rem 0rem;
             color: white;
             border: none;
-            border-bottom: 3px solid #0070F3;
-            &:focus {
-                border-bottom: 3px solid #FFB143;
-            }
+
+
             &:invalid {
                 border-bottom: 3px solid red;
             }
             &:not(:invalid) {
-                border-bottom: 3px solid #00DD14;
+                border-bottom: 3px solid #0070F3;
+            }
+            &:focus {
+                border-bottom: 3px solid #FFB143;
             }
         }
         &-text {
@@ -109,7 +110,6 @@ display: flex;
             font-size: 1.5rem;
             margin: .5rem 0rem 1rem 0rem;
             height: 15rem;
-            border-bottom: 3px solid #0070F3;
             color: white;
             &:focus {
                 border-bottom: 3px solid #FFB143;
@@ -118,7 +118,7 @@ display: flex;
                 border-bottom: 3px solid red;
             }
             &:not(:invalid) {
-                border-bottom: 3px solid #00DD14;
+                border-bottom: 3px solid #0070F3;
             }
         }
         &-button {

@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import {AiOutlineMinus} from 'react-icons/ai';
 import { GlobalContext } from "../../GlobalContext";
 import { useContext, useRef, useState, useEffect } from "react";
+import employmentHistory from '../../data/employment';
 
 const AboutExperience:NextPage = () => {
 const ref = useRef(null);
 
   const {isInViewport} = useContext(GlobalContext);
-
-   const [isIntersecting, setIsIntersecting] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,29 +30,37 @@ const ref = useRef(null);
   }, []);
   return (
     <Experience ref={ref}>
-        <div className="Head" style={{ left: isIntersecting ? '0%' : '-100%'}}>My commercial experience<span className="colored">!</span></div>
+        <div className="Head" style={{ left: isIntersecting ? '0%' : '-100%'}}>My employment history<span className="colored">!</span></div>
         <div className="Jobs">
-            <div className="Job" style={{ opacity: isIntersecting ? '1' : '0'}}>
+          {employmentHistory.map((el, index) => {
+            if(index == employmentHistory.length-1) {
+              return (<div className="Job" style={{ opacity: isIntersecting ? '1' : '0'}}>
                 <div className="Job-logo">
-                    <img src="/images/EnviroSolutions-logo.png" alt="" />
+                    <img src={el.companyLogo} alt="" />
                 </div>
                 <div className="Job-desc">
-                    <span className="Job-desc-position">Junior Full-Stack Developer</span>
-                    <span className="Job-desc-company">EnviroSolutions</span>
-                    <span className="Job-desc-time">02.2023 - current</span>
+                    <span className="Job-desc-position">{el.job}</span>
+                    <span className="Job-desc-company">{el.companyName}</span>
+                    <span className="Job-desc-time">{el.time}</span>
                 </div>
-            </div>
-            <div className="Break" style={{ opacity: isIntersecting ? '1' : '0'}}><AiOutlineMinus className="Icon" /></div>
-            <div className="Job" style={{ opacity: isIntersecting ? '1' : '0'}}>
-                <div className="Job-logo">
-                    <img src="/images/EnviroSolutions-logo.png" alt="" />
+            </div>)
+            } else {
+              return (<>
+                <div className="Job" style={{ opacity: isIntersecting ? '1' : '0'}}>
+                    <div className="Job-logo">
+                        <img src={el.companyLogo} alt="" />
+                    </div>
+                    <div className="Job-desc">
+                        <span className="Job-desc-position">{el.job}</span>
+                        <span className="Job-desc-company">{el.companyName}</span>
+                        <span className="Job-desc-time">{el.time}</span>
+                    </div>
                 </div>
-                <div className="Job-desc">
-                    <span className="Job-desc-position">Junior Front-End Developer (Intership)</span>
-                    <span className="Job-desc-company">EnviroSolutions</span>
-                    <span className="Job-desc-time">10.2022 - 01.2023 (4 months)</span>
-                </div>
-            </div>
+                <div className="Break" style={{ opacity: isIntersecting ? '1' : '0'}}><AiOutlineMinus className="Icon" /></div>
+              </>)
+            }
+          })}
+
         </div>
     </Experience>
   )
@@ -91,7 +99,7 @@ margin: 7.5rem 0rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 2rem 0rem 0rem 0rem;
+    margin: 5rem 0rem 0rem 0rem;
 }
 
 .Job {

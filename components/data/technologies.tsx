@@ -3,9 +3,10 @@ import {IoLogoCss3} from 'react-icons/io';
 import {IoLogoReact, IoLogoJavascript} from 'react-icons/io5';
 import {SiSass, SiStyledcomponents, SiTypescript, SiNextdotjs, SiQgis, SiAffinity,
     SiGit, SiBootstrap, SiWebpack, SiLeaflet, SiRedux, SiGatsby, SiElectron, SiLaravel, SiPython,
-        SiTestinglibrary, SiCypress, SiExpress, SiNestjs, SiDjango, SiJquery, SiJest} from 'react-icons/si';
+        SiTestinglibrary, SiCypress, SiExpress, SiNestjs, SiDjango, SiJquery, SiJest, SiVite} from 'react-icons/si';
 import {DiPhp, DiNodejsSmall} from 'react-icons/di';
 import {TbBrandReactNative} from 'react-icons/tb';
+import {BsWordpress} from 'react-icons/bs';
 
 const technologies = [
     {
@@ -55,6 +56,18 @@ const technologies = [
         description: "JavaScript is a programming language that is widely used for developing web applications.",
         link: "https://www.javascript.com/",
         ico: SiNextdotjs
+    },
+    {
+        technology: "NextJS",
+        description: "JavaScript is a programming language that is widely used for developing web applications.",
+        link: "https://www.javascript.com/",
+        ico: SiVite
+    },
+    {
+        technology: "NextJS",
+        description: "JavaScript is a programming language that is widely used for developing web applications.",
+        link: "https://www.javascript.com/",
+        ico: SiJest
     },
     {
         technology: "GIT",
@@ -178,6 +191,12 @@ export const knownTechnologies = [
         description: "JavaScript is a programming language that is widely used for developing web applications.",
         link: "https://www.javascript.com/",
         ico: SiDjango
+    },
+    {
+        technology: "Affinity Suite",
+        description: "JavaScript is a programming language that is widely used for developing web applications.",
+        link: "https://www.javascript.com/",
+        ico: BsWordpress
     },
 ];
 
