@@ -70,17 +70,24 @@ const Nav:NextPage = () => {
         </div>
         <div style={{ display: isSkillWindowOpened ? 'flex' : 'none' }} className="TechDescription">
             <div className="TechDescription-container">
-                <div className="TechDescription-container-head coloredBackground">
-                    <span>{SkillData.tech}</span>
-                    <button onClick={(e) => closeSkillWindow(e)}><IoMdClose /></button>
+                <div className="TechDescription-container-head">
+                    <div></div>
+
+                    <div className="TechDescription-container-head-icons">
+                        <div className="TechDescription-container-head-icons-project"><SkillData.ico /></div>
+                        <div className="TechDescription-container-head-icons-tech"><SkillData.ico /></div>
+                        <div className="TechDescription-container-head-icons-used"><SkillData.ico /></div>
+                    </div>
+                    <div  className="TechDescription-container-head-name">{SkillData.tech}</div>
+                    <span className="TechDescription-container-head-shadow"></span>
+
                 </div>
                 <div className="TechDescription-container-desc">
-                    <div className="TechDescription-container-desc-icon">
-                        <SkillData.ico />
-                    </div>
+
                     <p>
                         {SkillData.desc}
                     </p>
+                    <button style={{ zIndex: '1' }} onClick={(e) => closeSkillWindow(e)}><IoMdClose /></button>
                     <a href={SkillData.link}><BsFillFileEarmarkCodeFill /><span>See example project created with that technology</span></a>
                 </div>
                 {
@@ -119,12 +126,26 @@ z-index: 1000000000;
     align-items: center;
     justify-content: center;
 
+    &:before {
+        content: '';
+        position: absolute;
+        width: 30rem;
+        height: 27.5rem;
+        background: none;
+        border-radius: 15px;
+        transform: rotate(6.5deg);
+        border: 5px solid white;
+    }
+
     &-container {
-        width: 40%;
-        height: auto;
+        width: 30rem;
+        height: 27.5rem;
         border-radius: 15px;
         overflow: hidden;
         background: white;
+        position: relative;
+
+
 
         &-used {
             width: 100%;
@@ -153,10 +174,7 @@ z-index: 1000000000;
             justify-content: center;
             flex-direction: column;
 
-            &-icon {
-                margin: 3rem 0rem 2rem 0rem;
-                font-size: 4rem;
-            }
+
 
             & > p, a {
                 padding: .5rem 0rem;
@@ -188,17 +206,58 @@ z-index: 1000000000;
         }
 
         &-head {
+            height: 17.5rem;
             font-size: 2rem;
             font-family: 'Arimo';
             font-weight: bold;
             width: 100%;
-            padding: .5rem 0rem;
+            padding: 0rem 0rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: space-between;
             color: white;
+            background: #00AEFF;
+            position: relative;
+
+            &-icons {
+                margin: 4rem 0rem 0rem 0rem;
+                display: flex;
+                align-items: end;
+                & > div {
+                    margin: 0rem 1rem;
+                }
+                &-tech {
+                    color: black;
+                    background: white;
+                    font-size: 4rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 1rem;
+                    border-radius: 50%;
+                }
+            }
+
+            &-name {
+                margin-bottom: 1rem;
+            }
+
+            & > div {
+                z-index: 10;
+            }
+
+            &-shadow {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: #0070F3;
+                clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+            }
             & > span {
-                margin-left: 1rem;
+                margin-left: 0rem;
             }
 
             & > button {
