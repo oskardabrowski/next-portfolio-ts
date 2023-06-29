@@ -1,15 +1,13 @@
 import type { NextPage } from 'next';
-import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import {AiOutlineMenu} from 'react-icons/ai';
 import {IoClose, IoPersonSharp, IoMail} from 'react-icons/io5';
-import { IoMdClose } from 'react-icons/io';
 import {AiFillHome, AiFillCode} from 'react-icons/ai';
 import { useRouter } from 'next/router';
-import React, {useContext} from 'react';
+import React, {useContext, useState, useEffect, useRef, MutableRefObject} from 'react';
 import { GlobalContext } from '../GlobalContext';
-import { BsFillPatchCheckFill, BsFillFileEarmarkCodeFill } from 'react-icons/bs';
+import { BsFillFileEarmarkCodeFill } from 'react-icons/bs';
 import { BiMedal } from 'react-icons/bi';
 
 const Nav:NextPage = () => {
@@ -21,6 +19,8 @@ const Nav:NextPage = () => {
     const LoaderWhiteRef = useRef<HTMLDivElement>(null);
     const Shadow1WhiteRef = useRef<HTMLDivElement>(null);
     const Shadow2WhiteRef = useRef<HTMLDivElement>(null);
+    const BeforeTechWindow = useRef() as MutableRefObject<HTMLDivElement>;
+    const TechWindow = useRef() as MutableRefObject<HTMLDivElement>;
 
     useEffect(() => {
         if(isPageLoading) {
@@ -34,7 +34,13 @@ const Nav:NextPage = () => {
 
     const closeSkillWindow = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
-        setIsSkillWindowOpened(!isSkillWindowOpened);
+        BeforeTechWindow.current.style.animation = 'showuprotaterev .5s linear forwards';
+        TechWindow.current.style.animation = 'showuprev .5s linear forwards';
+        setTimeout(() => {
+            setIsSkillWindowOpened(!isSkillWindowOpened);
+            BeforeTechWindow.current.style.animation = 'showuprotate .5s linear forwards';
+            TechWindow.current.style.animation = 'showup .5s linear forwards';
+        }, 550);
     }
 
     return <Navigator>
@@ -69,30 +75,31 @@ const Nav:NextPage = () => {
             <div ref={Shadow2WhiteRef} className="Loader-shadow2" style={{ transition: isPageLoading ? 'all .5s ease-in-out' : 'all 1.5s ease-in-out' , clipPath: isPageLoading ? 'polygon(100% 100%, 100% 0, 0 0, 100% 100%, 0 0, 0 100%, 100% 100%, 0 0)' : 'polygon(100% 0, 100% 0, 100% 0, 100% 0, 0 100%, 0 100%, 0 100%, 0 100%)' }}></div>
         </div>
         <div style={{ display: isSkillWindowOpened ? 'flex' : 'none' }} className="TechDescription">
-            <div className="TechDescription-container">
+            <div ref={BeforeTechWindow} className="TechDescription-before"></div>
+            <div ref={TechWindow} className="TechDescription-container">
                 <div className="TechDescription-container-head">
                     <div></div>
 
                     <div className="TechDescription-container-head-icons">
-                        <div className="TechDescription-container-head-icons-project"><SkillData.ico /></div>
+                        {
+                            SkillData.link ? <a title="Example project!" href="#" className="TechDescription-container-head-icons-secondIco"><BsFillFileEarmarkCodeFill /></a> : ''
+                        }
                         <div className="TechDescription-container-head-icons-tech"><SkillData.ico /></div>
-                        <div className="TechDescription-container-head-icons-used"><SkillData.ico /></div>
+                        {
+                            SkillData.used ? <div className="TechDescription-container-used"><BiMedal /><span>I use this technology in commercial projects</span></div> : ''
+                        }
                     </div>
                     <div  className="TechDescription-container-head-name">{SkillData.tech}</div>
                     <span className="TechDescription-container-head-shadow"></span>
 
                 </div>
                 <div className="TechDescription-container-desc">
-
                     <p>
                         {SkillData.desc}
                     </p>
-                    <button style={{ zIndex: '1' }} onClick={(e) => closeSkillWindow(e)}><IoMdClose /></button>
-                    <a href={SkillData.link}><BsFillFileEarmarkCodeFill /><span>See example project created with that technology</span></a>
+                    <button className="TechCloseButton" style={{ zIndex: '1' }} onClick={(e) => closeSkillWindow(e)}>Ok</button>
                 </div>
-                {
-                    SkillData.used ? <div className="TechDescription-container-used"><BiMedal /><span>I use this technology in commercial projects</span></div> : ''
-                }
+
             </div>
         </div>
     </Navigator>
@@ -115,6 +122,55 @@ z-index: 1000000000;
     }
 }
 
+.TechCloseButton {
+    padding: .5rem .75rem;
+    border: none;
+    font-family: 'Arimo';
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 50rem;
+    background: #00AEFF;
+    transition: all .5s ease-in-out;
+    &:hover {
+        cursor: pointer;
+        background: #0070F3;
+    }
+}
+
+@keyframes showup {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes showuprotate {
+    0% {
+        transform: scale(0) rotate(0deg);
+    }
+    100% {
+        transform: scale(1) rotate(6.5deg);
+    }
+}
+@keyframes showuprev {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes showuprotaterev {
+    0% {
+        transform: scale(1) rotate(6.5deg);
+    }
+    100% {
+        transform: scale(0) rotate(0deg);
+    }
+}
+
 .TechDescription {
     width: 100%;
     height: 100vh;
@@ -126,15 +182,17 @@ z-index: 1000000000;
     align-items: center;
     justify-content: center;
 
-    &:before {
+    &-before {
         content: '';
         position: absolute;
         width: 30rem;
         height: 27.5rem;
         background: none;
         border-radius: 15px;
-        transform: rotate(6.5deg);
+        transform: scale(0) rotate(0deg);
         border: 5px solid white;
+        transition: all .5s ease-in-out;
+        animation: showuprotate .5s linear forwards;
     }
 
     &-container {
@@ -144,7 +202,9 @@ z-index: 1000000000;
         overflow: hidden;
         background: white;
         position: relative;
-
+        transition: all .5s ease-in-out;
+        transform: scale(0);
+        animation: showup .5s linear forwards;
 
 
         &-used {
@@ -224,9 +284,28 @@ z-index: 1000000000;
                 margin: 4rem 0rem 0rem 0rem;
                 display: flex;
                 align-items: end;
-                & > div {
+                & > div, a {
                     margin: 0rem 1rem;
                 }
+
+                &-secondIco {
+                    color: black;
+                    background: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: .5rem;
+                    border-radius: 50%;
+                    position: absolute;
+
+                    &:nth-child(1) {
+                        left: 20%;
+                    }
+                    &:nth-child(3) {
+                        right: 20%;
+                    }
+                }
+
                 &-tech {
                     color: black;
                     background: white;

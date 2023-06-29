@@ -1,17 +1,21 @@
 import { NextPage } from 'next';
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import {IoLogoReact, IoLogoJavascript} from 'react-icons/io5';
 import {AiFillGithub} from 'react-icons/ai';
 import {BsFlagFill} from 'react-icons/bs';
+import { GlobalContext } from '../../GlobalContext';
+import Link from 'next/link';
 
 const ProjectsList:NextPage = () => {
+  const {isPageLoading, LinkHandler, isSkillWindowOpened, setIsSkillWindowOpened, SkillData} = useContext(GlobalContext);
+
   return (
     <List>
       {
         [1,2,3,4,5,6,7,8,9].map((el, index) => {
-          return (<a title="Read more" href={`/projects/${index}`} className="Item">
+          return (<Link onClick={(e) => LinkHandler(e, `/projects/${index}`)} title="Read more" href={`/projects/${index}`} className="Item">
             <div className="Item-image">
               <div className="Item-image-container">
                 <div>
@@ -35,7 +39,7 @@ const ProjectsList:NextPage = () => {
                 </div>
               </div>
             </div>
-          </a>);
+          </Link>);
         })
       }
     </List>
