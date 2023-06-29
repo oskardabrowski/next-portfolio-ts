@@ -515,6 +515,31 @@ z-index: 1000000000;
     }
 }
 
+@media(max-width: 68.75em) {
+    .MenuBlueShadow {
+        width: 41%;
+    }
+    .MenuOptions {
+        width: 40%;
+    }
+}
+@media(max-width: 50em) {
+    .MenuBlueShadow {
+        width: 51%;
+    }
+    .MenuOptions {
+        width: 50%;
+    }
+}
+@media(max-width: 37.5em) {
+    .MenuBlueShadow {
+        width: 100%;
+    }
+    .MenuOptions {
+        width: 100%;
+    }
+}
+
 `;
 
 export default Nav;
