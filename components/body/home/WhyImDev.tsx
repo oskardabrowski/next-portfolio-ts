@@ -106,6 +106,62 @@ overflow: hidden;
   transition-delay: 2;
   transition: all 3s ease-in-out;
 }
+
+@media(max-width: 62.5em) {
+  .Picture {
+    &-cloud1 {
+      left: 55%;
+    }
+  }
+}
+
+@media(max-width: 50em) {
+  .Picture {
+    &-cloud1 {
+      left: 60%;
+    }
+  }
+
+  .Text {
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Arimo';
+    font-weight: bold;
+  }
+
+  .Part1 {
+    margin-left: -5rem;
+  }
+
+  .Part2 {
+    margin-right: -5rem;
+  }
+}
+
+@media(max-width: 37.5em) {
+  .Picture {
+    &-cloud1 {
+      left: 65%;
+    }
+  }
+
+  .Text {
+    font-size: 1.75rem;
+    color: white;
+    font-family: 'Arimo';
+    font-weight: bold;
+  }
+
+  .Part1 {
+    margin-left: -5rem;
+  }
+
+  .Part2 {
+    margin-right: -5rem;
+  }
+}
+
+
 `;
 
 export default WhyImDev

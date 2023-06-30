@@ -124,6 +124,32 @@ flex-direction: column;
     }
   }
 }
+
+@media(max-width: 75em) {
+  .Body {
+    flex-direction: column;
+  }
+}
+@media(max-width: 50em) {
+  .Header {
+    font-size: 2rem;
+  }
+  .Body {
+    &-img {
+      &-container {
+        width: 15rem;
+        height: 15rem;
+      }
+    }
+    &-paragraph {
+      & > p {
+        font-size: 1.15rem;
+        line-height: 1.75rem;
+        text-indent: 3rem;
+      }
+    }
+  }
+}
 `;
 
 export default ShortDesc;

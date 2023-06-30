@@ -34,12 +34,12 @@ const Nav:NextPage = () => {
 
     const closeSkillWindow = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
-        BeforeTechWindow.current.style.animation = 'showuprotaterev .5s linear forwards';
-        TechWindow.current.style.animation = 'showuprev .5s linear forwards';
+        BeforeTechWindow.current.style.animation = 'showuprotaterev .25s linear forwards';
+        TechWindow.current.style.animation = 'showuprev .25s linear forwards';
         setTimeout(() => {
             setIsSkillWindowOpened(!isSkillWindowOpened);
-            BeforeTechWindow.current.style.animation = 'showuprotate .5s linear forwards';
-            TechWindow.current.style.animation = 'showup .5s linear forwards';
+            BeforeTechWindow.current.style.animation = 'showuprotate .25s linear forwards';
+            TechWindow.current.style.animation = 'showup .25s linear forwards';
         }, 550);
     }
 
@@ -192,7 +192,7 @@ z-index: 1000000000;
         transform: scale(0) rotate(0deg);
         border: 5px solid white;
         transition: all .5s ease-in-out;
-        animation: showuprotate .5s linear forwards;
+        animation: showuprotate .25s linear forwards;
     }
 
     &-container {
@@ -202,7 +202,7 @@ z-index: 1000000000;
         overflow: hidden;
         background: white;
         position: relative;
-        transition: all .5s ease-in-out;
+        transition: all .25s ease-in-out;
         transform: scale(0);
         animation: showup .5s linear forwards;
 
@@ -537,6 +537,29 @@ z-index: 1000000000;
     }
     .MenuOptions {
         width: 100%;
+    }
+    .TechDescription {
+        &-before {
+            display: none;
+        }
+
+        &-container {
+            width: 100%;
+            border-radius: 0px;
+
+            &-head {
+                &-icons {
+                    &-secondIco {
+                        &:nth-child(1) {
+                            left: 10%;
+                        }
+                        &:nth-child(3) {
+                            right: 10%;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import { Engine } from "tsparticles-engine";
-import { RangeValue } from "tsparticles-engine";
 
 const HomeHeader:NextPage = () => {
 
@@ -202,4 +201,46 @@ overflow: hidden;
     left: 0%;
   }
 }
+
+@media(max-width: 62.5em) {
+  .HigherContent {
+    &-header {
+      margin-left: 2rem;
+      &-big {
+        font-size: 3rem;
+      }
+      &-small {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+@media(max-width: 43.75em) {
+  .HigherContent {
+    &-header {
+      margin-left: 0rem;
+      width: 100%;
+      &-big {
+        width: 100%;
+        display: flex;
+        font-size: 2.5rem;
+        text-align: center;
+        margin: 0;
+      }
+      &-small {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-left: 0rem;
+        font-size: 1.5rem;
+        text-align: center;
+        & > span {
+          margin-right: .5rem;
+        }
+      }
+    }
+  }
+}
+
 `;
