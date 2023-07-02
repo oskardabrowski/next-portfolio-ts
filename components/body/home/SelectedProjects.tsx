@@ -201,7 +201,8 @@ overflow: hidden;
 @media screen and (orientation: portrait) {
 
     #content {
-        max-height: 100vh;
+        /* max-height: 100vh; */
+        height: 200vh;
     }
 
     #planes {
@@ -209,20 +210,41 @@ overflow: hidden;
         width: 100vw;
 
         padding: 2.5vh 0;
-        height: auto;
+        height: 150vh;
         flex-direction: column;
     }
 
     .plane-wrapper {
         width: 70vw;
-        height: calc(100vh / 1.75);
-        margin: 5vw 0;
+        height: calc(100vh / 6);
+        margin: 1vw 0;
     }
 
     .plane-title {
         font-size: 10vw;
     }
 
+}
+
+@media(max-width: 50em) {
+  .Header {
+    font-size: 2rem;
+  }
+  .Body {
+    &-img {
+      &-container {
+        width: 15rem;
+        height: 15rem;
+      }
+    }
+    &-paragraph {
+      & > p {
+        font-size: 1.15rem;
+        line-height: 1.75rem;
+        text-indent: 3rem;
+      }
+    }
+  }
 }
 
 `;

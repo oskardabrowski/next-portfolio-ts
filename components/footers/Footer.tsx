@@ -63,7 +63,6 @@ margin-top: 10rem;
     background-position: center;
     transition: all 1.5s ease-in-out;
     filter: sepia(100%) hue-rotate(190deg) saturate(900%);
-
 }
 
 .First {
@@ -100,6 +99,79 @@ margin-top: 10rem;
 
       &:hover {
         color: green;
+      }
+    }
+  }
+}
+
+@media(max-width: 81.25em) {
+  .Footer {
+    width: 75vw;
+  }
+}
+
+@media(max-width: 68.75em) {
+  .Footer {
+    width: 85vw;
+  }
+}
+
+@media(max-width: 62.5em) {
+  height: 40vh;
+  .First {
+    & > div {
+      font-size: 1.5rem;
+      margin-right: 7.5rem;
+    }
+  }
+  .Second {
+    font-size: 2.5rem;
+  }
+}
+
+@media(max-width: 43.75em) {
+  height: 30vh;
+  .Footer {
+    width: 85vw;
+  }
+  .First {
+    & > div {
+      font-size: 1.25rem;
+      margin-right: 5.5rem;
+    }
+  }
+  .Second {
+    margin-left: 2rem;
+    font-size: 2rem;
+  }
+}
+
+@media(max-width: 31.25em) {
+  height: 30vh;
+  .Footer {
+    width: 110vw;
+  }
+  .First {
+    & > div {
+      font-size: 1rem;
+      margin-right: 5.5rem;
+    }
+  }
+  .Second {
+
+    margin-left: 2rem;
+    font-size: 2rem;
+
+    & > div {
+      display: flex;
+
+      & > a {
+        color: white;
+        padding: 1rem;
+
+        &:hover {
+          color: green;
+        }
       }
     }
   }

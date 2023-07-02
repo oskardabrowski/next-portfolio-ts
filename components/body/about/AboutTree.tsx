@@ -340,6 +340,21 @@ margin: 7.5rem 0rem 0rem 0rem;
     }
   }
 }
+
+@media(max-width: 46.875em) {
+  .Tree {
+    & > div {
+      font-size: 4rem;
+    }
+  }
+}
+@media(max-width: 31.25em) {
+  .Tree {
+    & > div {
+      font-size: 3rem;
+    }
+  }
+}
 `;
 
 export default AboutTree

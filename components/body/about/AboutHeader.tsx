@@ -64,6 +64,90 @@ h2 {
   }
 }
 
+@media(max-width: 62.5em) {
+  @keyframes goRightH1 {
+    0% {
+      left: -50%;
+      opacity: 0;
+    }
+    100% {
+      left: 10%;
+      opacity: 1;
+    }
+  }
+  @keyframes goRightH2 {
+    0% {
+      left: -50%;
+      opacity: 0;
+    }
+    100% {
+      left: 40%;
+      opacity: 1;
+    }
+  }
+}
+@media(max-width: 43.75em) {
+  h1 {
+    position: absolute;
+    top: 35%;
+    left: -50%;
+    opacity: 0;
+    font-size: 3rem;
+    font-family: 'Arimo';
+    animation: goRightH1 2s 1s ease-out forwards;
+  }
+  h2 {
+    position: absolute;
+    top: 45%;
+    left: -50%;
+    opacity: 0;
+    font-size: 2rem;
+    font-family: 'Arimo';
+    animation: goRightH2 2s 2s ease-out forwards;
+  }
+  @keyframes goRightH1 {
+    0% {
+      left: -50%;
+      opacity: 0;
+    }
+    100% {
+      left: 10%;
+      opacity: 1;
+    }
+  }
+  @keyframes goRightH2 {
+    0% {
+      left: -50%;
+      opacity: 0;
+    }
+    100% {
+      left: 40%;
+      opacity: 1;
+    }
+  }
+}
+@media(max-width: 37.5em) {
+  h1 {
+    top: 45%;
+    left: -50%;
+    font-size: 2rem;
+  }
+  h2 {
+    top: 52.5%;
+    font-size: 1.45rem;
+  }
+  @keyframes goRightH2 {
+    0% {
+      left: -50%;
+      opacity: 0;
+    }
+    100% {
+      left: 30%;
+      opacity: 1;
+    }
+  }
+}
+
 `;
 
 export default AboutHeader

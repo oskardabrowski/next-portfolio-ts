@@ -306,7 +306,26 @@ overflow: hidden;
     flex-direction: column;
 }
 
+@media(max-width: 50em) {
+  .Header {
+    font-size: 2rem;
+  }
 
+  .Info {
+    font-size: 1.15rem;
+    line-height: 1.75rem;
+    text-indent: 3rem;
+  }
+
+  .SkillContainer {
+    margin: 1.5rem;
+    width: 7.5rem;
+    height: 7.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 `;
 
 export default SkillsAndKnownTech;

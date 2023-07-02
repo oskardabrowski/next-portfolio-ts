@@ -30,7 +30,7 @@ const AboutOther:NextPage = () => {
   return (
     <OtherWrapper ref={ref}>
       <h3 className="Head" style={{ transition: 'all 2.5s ease-in-out', left: isIntersecting ? '0%' : '-100%' }}>My other interests<span className="colored">!</span></h3>
-      <div className="Item" style={{ flexDirection: 'row', transition: 'all 2.5s ease-in-out', left: isIntersecting ? '0%' : '150%' }}>
+      <div className="Item" style={{ transition: 'all 2.5s ease-in-out', left: isIntersecting ? '0%' : '150%' }}>
         <div className="ImageWrapper" style={{ background: 'linear-gradient(to top right, #CF0000, #FF0000)' }}>
           <div className="ImageContainer">
             <img src="/images/interests/Movies.jpg" alt="Movies"/>
@@ -43,7 +43,7 @@ const AboutOther:NextPage = () => {
           </p></div>
         </div>
       </div>
-      <div className="Item" style={{ flexDirection: 'row-reverse', transition: 'all 2.5s 2s ease-in-out', left: isIntersecting ? '0%' : '-150%' }}>
+      <div className="Item" style={{ transition: 'all 2.5s 2s ease-in-out', left: isIntersecting ? '0%' : '-150%' }}>
         <div className="ImageWrapper" style={{ background: 'linear-gradient(to top right, #00B001, #00FF02)' }}>
           <div className="ImageContainer">
             <img src="/images/interests/Books.jpg" alt="Movies"/>
@@ -56,7 +56,7 @@ const AboutOther:NextPage = () => {
           </p></div>
         </div>
       </div>
-      <div className="Item" style={{ flexDirection: 'row', transition: 'all 2.5s 4s ease-in-out', left: isIntersecting ? '0%' : '150%' }}>
+      <div className="Item" style={{ transition: 'all 2.5s 4s ease-in-out', left: isIntersecting ? '0%' : '150%' }}>
         <div className="ImageWrapper" style={{ background: 'linear-gradient(to top right, #B900CF, #E400FF)' }}>
           <div className="ImageContainer">
             <img style={{ width: 'auto', height: '100%', position: 'relative', left: '-50%' }} src="/images/interests/Graphic.jpg" alt="Movies"/>
@@ -108,6 +108,9 @@ overflow: hidden;
   display: flex;
   padding: 0rem 1rem;
   position: relative;
+  &:nth-child(3) {
+    flex-direction: row-reverse;
+  }
 }
 
 .ImageWrapper {
@@ -129,6 +132,54 @@ overflow: hidden;
   border-radius: 50%;
   & > img {
     width: 100%;
+  }
+}
+
+@media(max-width: 62.5em) {
+  .Item {
+    flex-direction: column;
+    align-items: center;
+    &:nth-child(3) {
+      flex-direction: column;
+    }
+  }
+}
+
+@media(max-width: 50em) {
+  .Head {
+    font-size: 2rem;
+    margin-left: 2rem;
+    position: relative;
+    transition: all 2.5s ease-in-out;
+  }
+
+  .Text {
+    margin-top: .5rem;
+    font-size: 1.15rem;
+    line-height: 1.5rem;
+    text-indent: 3rem;
+  }
+
+  .ImageWrapper {
+    width: 15rem;
+    height: 15rem;
+    min-width: 15rem;
+    min-height: 15rem;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ImageContainer {
+    width: 12.5rem;
+    height: 12.5rem;
+    overflow: hidden;
+    border-radius: 50%;
+    & > img {
+      width: 100%;
+    }
   }
 }
 

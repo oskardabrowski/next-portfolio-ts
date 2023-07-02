@@ -94,6 +94,8 @@ class Slider {
     // we will translate it horizontally in landscape mode
     // vertically in portrait mode
     setBoundaries() {
+        // landscape
+
         if(window.innerWidth >= window.innerHeight) {
             // landscape
             this.boundaries = {
@@ -109,15 +111,39 @@ class Slider {
         else {
             // portrait
             this.boundaries = {
-                max: -1 * this.options.element!.clientHeight + window.innerHeight,
+                max: -1 * this.options.element!.clientWidth + window.innerWidth,
                 min: 0,
-                sliderSize: this.options.element!.clientHeight,
-                referentSize: window.innerHeight,
+                sliderSize: this.options.element!.clientWidth * 2,
+                referentSize: window.innerWidth,
             };
 
             // set our slider direction
-            this.direction = 1;
+            this.direction = 0;
         }
+        // if(window.innerWidth >= window.innerHeight) {
+        //     // landscape
+        //     this.boundaries = {
+        //         max: -1 * this.options.element!.clientWidth + window.innerWidth,
+        //         min: 0,
+        //         sliderSize: this.options.element!.clientWidth,
+        //         referentSize: window.innerWidth,
+        //     };
+
+        //     // set our slider direction
+        //     this.direction = 0;
+        // }
+        // else {
+        //     // portrait
+        //     this.boundaries = {
+        //         max: -1 * this.options.element!.clientHeight + window.innerHeight,
+        //         min: 0,
+        //         sliderSize: this.options.element!.clientHeight,
+        //         referentSize: window.innerHeight,
+        //     };
+
+        //     // set our slider direction
+        //     this.direction = 1;
+        // }
     }
 
     /*** HOOKS ***/

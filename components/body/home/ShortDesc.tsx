@@ -30,12 +30,12 @@ const ShortDesc:NextPage = () => {
 
   return (
     <ShortDescStyles ref={ref}>
-      <h2 className="Header" style={{ left: isIntersecting ? '0%' : '-50%'}}>About me<span className="colored">.</span></h2>
+      <h2 className="Header" style={{ left: isIntersecting ? '0%' : '-100%'}}>About me<span className="colored">.</span></h2>
       <div className="Body">
-        <div className="Body-img" style={{ left: isIntersecting ? '0%' : '-50%'}}>
+        <div className="Body-img" style={{ left: isIntersecting ? '0%' : '-100%'}}>
           <div className="Body-img-container coloredBackground"></div>
         </div>
-        <div className="Body-paragraph" style={{ right: isIntersecting ? '0%' : '-110%'}}>
+        <div className="Body-paragraph" style={{ right: isIntersecting ? '0%' : '-200%'}}>
           <p>
 
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In auctor volutpat erat, at mollis erat fringilla sed. Fusce non lectus augue. Ut pellentesque aliquet pharetra. Aliquam ac orci ut nibh bibendum suscipit. Nulla pretium euismod varius. Etiam dignissim ante at magna commodo scelerisque. In at nunc dolor. Donec ornare sed urna sit amet vulputate. Aenean sed eros non massa aliquam hendrerit id eu urna. Ut vitae ex vitae erat cursus congue. Pellentesque facilisis ut sapien quis tempus. Vestibulum felis nulla, mattis sit amet ligula eget, interdum pretium turpis.

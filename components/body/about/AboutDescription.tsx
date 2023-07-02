@@ -102,6 +102,29 @@ overflow: hidden;
   }
 }
 
+@media(max-width: 50em) {
+  .Head {
+    font-size: 2rem;
+    margin-left: 2rem;
+    position: relative;
+    transition: all 2.5s ease-in-out;
+  }
+
+  .Desc {
+    margin: 1rem 2rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
+    text-indent: 3rem;
+  }
+
+  .Image {
+    &-center {
+      width: 15rem;
+      height: 15rem;
+    }
+  }
+}
+
 `;
 
 export default AboutDescription

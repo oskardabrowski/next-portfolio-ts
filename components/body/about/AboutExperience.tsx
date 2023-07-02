@@ -126,6 +126,43 @@ margin: 7.5rem 0rem;
     }
 }
 
+@media(max-width: 56.25em) {
+  .Job {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+  }
+}
+
+@media(max-width: 50em) {
+  .Head {
+    font-size: 2rem;
+    margin-left: 2rem;
+    position: relative;
+    transition: all 2.5s ease-in-out;
+  }
+
+ .Job {
+    &-desc {
+      margin-left: 1rem;
+        &-position {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: .5rem;
+        }
+        &-company {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: .5rem;
+        }
+        &-time {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+    }
+  }
+}
+
 `;
 
 export default AboutExperience

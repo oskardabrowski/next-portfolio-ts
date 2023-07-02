@@ -537,6 +537,8 @@ z-index: 1000000000;
     }
     .MenuOptions {
         width: 100%;
+        min-height: 100vh;
+        height: 100vh;
     }
     .TechDescription {
         &-before {
