@@ -163,6 +163,20 @@ align-content: start;
   }
 }
 
+@media(max-width: 31.25em) {
+  .Item {
+    margin: .5rem 0rem;
+    width: 25rem;
+    height: 15rem;
+    background: white;
+    z-index: 1000;
+    border-radius: 0px;
+    overflow: hidden;
+    display: flex;
+    transition: all .5s ease-in-out;
+  }
+}
+
 `;
 
 export default ProjectsList

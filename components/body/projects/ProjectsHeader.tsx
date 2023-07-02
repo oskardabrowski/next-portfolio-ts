@@ -199,6 +199,22 @@ canvas {
       overflow: hidden !important;
   }
 }
+
+@media(max-width: 43.75em) {
+  height: 30vh;
+  .ProjectsHead {
+    font-size: 2rem;
+    top: 5rem;
+    left: 5rem;
+  }
+}
+@media(max-width: 31.25em) {
+  .ProjectsHead {
+    font-size: 1.5rem;
+    top: 6rem;
+    left: 1rem;
+  }
+}
 `;
 
 export default ProjectsHeader;
