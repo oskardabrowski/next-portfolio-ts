@@ -46,8 +46,17 @@ const Options = styled.div`
 width: 100%;
 height: auto;
 display: flex;
+
+@media(max-width: 71.875em) {
+    flex-direction: column;
+    overflow: hidden;
+}
+
 .Options {
     width: 50%;
+    @media(max-width: 71.875em) {
+        width: 100%;
+    }
     &-option {
         margin: 1rem 0rem;
         padding: 1rem;
@@ -58,6 +67,16 @@ display: flex;
         font-family: 'Arimo';
         display: flex;
         align-items: center;
+
+        @media(max-width: 71.875em) {
+            width: 90%;
+        }
+        @media(max-width: 25em) {
+            font-size: .9rem;
+            & > a {
+                font-size: .9rem;
+            }
+        }
 
         & > a {
             color: white;
@@ -73,12 +92,19 @@ display: flex;
 }
 .ContactForm {
     width: 50%;
+    @media(max-width: 71.875em) {
+        width: 100%;
+    }
     &-form {
         color: white;
         font-family: 'Arimo';
         width: 90%;
         display: flex;
         flex-direction: column;
+        @media(max-width: 71.875em) {
+            margin-left: 5%;
+            margin-top: 5rem;
+        }
         & > label {
             font-size: 1.5rem;
             font-weight: bold;

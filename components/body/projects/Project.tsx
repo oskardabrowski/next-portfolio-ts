@@ -88,11 +88,19 @@ font-family: 'Arimo';
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 5rem;
 
+    @media(max-width: 46.875em) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
     &-flex {
         display: flex;
         align-items: center;
         flex-direction: column;
         color: white;
+        @media(max-width: 46.875em) {
+            margin-top: 2rem;
+        }
         &-list {
             display: flex;
             flex-wrap: wrap;
